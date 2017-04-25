@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <FORM id="formularioCantidad">
+    <INPUT type="text" SIZE=10 id="cantidad" onChange="validarSiNumero(this.value);">
+    </FORM>
+
+
+    <script>
+      function validarSiNumero(numero){
+        if (!/^([0-9])*$/.test(numero))
+          alert("El valor " + numero + " no es un número");
+      }
+    </script>
+
+</body>
+</html>
