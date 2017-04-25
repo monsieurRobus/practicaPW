@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+     <script>
+      function valornumerico(numero){
+        if (!/^([0-9])*$/.test(numero))
+          alert("El valor " + numero + " no es un número");
+      }
+    </script>
+
+	<header>
+		<a href="index.html" id="inmo">INMO GRU3P</a>
+		<p>La mejor oferta de vivienda en España</p>
+	</header>
+
+	<section id="formulario">
+
+	<p id="titulo">FORMULARIO DE REGISTRO</p>
+
+	<form action="" name="formulario" method="get">
+
+		<input type="text" id="nombre" name="nombre" placeholder="Nombre" required="required">
+		<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required="required">
+		<input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento" required="required">
+		<input type="text" id="calle" name="calle" placeholder="Calle" required="required">
+		<input type="text" id="poblacion" name="poblacion" placeholder="Población" required="required">
+		<input type="text" id="codigo" name="codigo" placeholder="C.P." required="required" onChange="valornumerico(this.value)";>
+		<input type="text" id="pais" name="pais" placeholder="Pais">
+		<input type="text" id="telefono" name="telefono" placeholder="Teléfono" required="required">
+		<input type="mail" id="mail" name="mail" placeholder="E-mail" required="required">
+		<input type="text" id="usuario" name="usuario" placeholder="Usuario" required="required">
+		<input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required="required">
+		<input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required="required">
+		<input type="submit" value="Validar">
+
+	</form>
+
+	</section>
+
+
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+*{
+	margin:0px;
+	padding:0px;	
+	font-family:Arial;
+}
+
+html,body{
+	color:red;
+	background:url(../imagenes/pisos.jpg);
+	background-repeat:no-repeat;
+	background-attachment:fixed; 
+	background-position: center 0;
+}
+
+header{
+	margin:auto;
+	background-color:white;
+	padding:20px;
+	width:400px;
+	text-align:center;
+
+}
+
+header #inmo{
+	font-size:3.5em
+}
+
+header #viviendas{
+	background-color:yellow;
+	padding:20px;
+	width:400px;
+	text-align:center;
+
+}
+		
+p#descubre, p#acceso, p#mapa, p#provincia{
+	margin:auto;
+	background-color:white;
+	width:500px;
+	padding:10px;
+	margin-bottom:40px;
+
+}
+
+p#acceso{
+	margin:auto;
+	background-color:white;
+	width:350px;
+	padding:10px;
+	margin-bottom:40px;
+}
+
+section{
+	margin:auto;
+	margin-top:20px;
+	padding:20px;
+	width:600px;
+	text-align:center;
+
+}
+
+#botonnuevo,#botonregistrado{
+	background-color:red;
+	color:white;
+	display:inline-table;
+	margin:20px;
+	width:300px;
+	padding:10px;
+	border-radius:10px;
+	text-decoration:none;
+	box-shadow:0px 3px 0px black;
+
+}
+
+footer{
+	margin:auto;
+	margin-top:225px;
+	background-color:white;
+	padding:10px;
+	font-size:0.8em;
+	width:800px;
+	text-align:center;
+}
+
+section#formulario{
+	margin-top:10px;
+	width:400px;
+	height:620px;
+	background-color:white;
+	color:red;
+	overflow:hidden;
+	border-radius:5px;
+}
+
+p#titulo{
+	margin:auto;
+	font-size:1.6em;
+	text-align:center;
+}
+
+input[type="text"],input[type="mail"],input[type="password"]{
+	width:350px;
+	height:35px;
+	margin-top: 10px;
+	padding-left: 10px;
+	font-size: 1.1em;
+	border-radius:5px;
+	outline:none;
+	border:0px;
+	background-color:red;
+}
+
+input[type="submit"]{
+	margin:20px;
+	width:360px;
+	height:40px;
+	font-size: 1.1em;
+	border-radius:5px;
+	outline:none;
+	border:0px;
+	background-color:red;
+	color:white;
+	box-shadow:0px 3px 0px black;
+}
+
+
+section#comunidad{
+	margin:auto;
+	margin-top:10px;
+	width:300px;
+	font-size:1.8em;
+	text-align:center;
+	background-color:red;
+	padding:20px;
+	color:white;
+	overflow:hidden;
+	border-radius:5px;
+}
+
+section#pisos{
+	margin:auto;
+	margin-top:10px;
+	width:800px;
+	font-size:1.2em;
+	background-color:white;
+	padding:20px;
+	color:red;
+	overflow:hidden;
+	border-radius:5px;
+}
