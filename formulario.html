@@ -8,10 +8,183 @@
 <body>
 
      <script>
+//función que mediante una expresión regular comprueba que el valor del campo es un número
       function valornumerico(numero){
-        if (!/^([0-9])*$/.test(numero))
+        if (!/^([0-9])*$/.test(numero))// dígitos entre 0 y 9 que pueden estar más de 1 vez
           alert("El valor " + numero + " no es un número");
       }
+
+
+	  
+
+// validar dni. Tiene que comprobar que la letra que equivale al resto de sumar los dígitos del DNI entre 23 en una tavla coincide con la letra del DNI 
+		function nif(dni) {
+	 
+		  if(/^\d{8}[a-zA-Z]$/.test (dni) == true){//valida mediante expresión regular que el valor tenga 8 dígitos primero y un 	
+													//caracter minúscula o mayúscula y si es verdad
+			 numero = dni.substr(0,dni.length-1); // separa la variable con el número por un lado
+			 letra = dni.substr(dni.length-1,1); // variable con la letra
+			 numero = numero % 23;//se divide el número entre 23 porque así se valida el DNI
+			 tablaMinisterio='TRWAGMYFPDXBNJZSQVHLCKET';
+			 tablaMinisterio=tablaMinisterio.substring(numero,numero+1);// con el resto del móduklo buscamos el caracter en la tabla
+			if (tablaMinisterio!=letra.toUpperCase()) { // el caracter con la letra del DNI tienen que coincidir
+			   alert('El DNI es incorrecto');
+			 }else{
+			   continuar=true;
+			 }
+		  }else{
+			 alert('El DNI es incorrecto');// si no  es true la priemra condición
+		   }
+		}
+
+
+		
+//Función sacada del módulo 5  de los apuntes de la asignatura. Página 33.
+//validación del formato del correo electrónico		
+
+
+
+	  function esCorreoE(elem) { 
+			var cadena = elem.value; //coge el valor del campo del formulario
+			cadena = cadena.toLowerCase();
+			if (cadena.indexOf("@") > 1) {// comprueba que @ aparece y si el índice en el que aparece @ es mayor que 1 
+			var addr = cadena.substring(0, cadena.indexOf("@"));//El método substring(inicio,fin) realiza una extracción de 
+																//la cadena desde el inicio hasta el @
+			var dominio = cadena.substring(cadena.indexOf("@") + 1, cadena.length);// substring desde le caracter que sigue a
+																		//@ hasta el final de la cadena
+			if (dominio.indexOf(".") == -1) { // ecomprobar que aparece un . en caso contario no se sigue
+			alert("Comprueba la dirección de correo");
+			return false;
+			}
+			for (var i = 0; i < addr.length; i++) {
+			unCaracter = addr.charAt(i).charCodeAt(0);// se comprueba caracter por caracter
+			if ((i == 0 && (unCaracter == 45 || unCaracter == 46)) ||
+			(i == addr.length - 1 && unCaracter == 46)) {
+			alert("Comprueba la dirección de correo");
+			return false;
+			}
+			//Se comprueban caracteres validos (- . _ 0-9 a-z)
+			if (unCaracter == 45 || unCaracter == 46 || unCaracter == 95 ||
+			(unCaracter > 47 && unCaracter < 58) ||
+			(unCaracter > 96 && unCaracter < 123)) {
+			continue;
+			} else {
+			alert("Comprueba la dirección de correo.");
+			return false;
+			}
+			}
+			for (i = 0; i < dominio.length; i++) {
+			unCaracter = dominio.charAt(i).charCodeAt(0);
+			if ((i == 0 && (unCaracter == 45 || unCaracter == 46)) ||
+			((i == dominio.length - 1 || i == dominio.length - 2) &&
+			unCaracter == 46)) {
+			alert("Verifica el dominio de la dirección.");
+			return false;
+			}
+			if (unCaracter == 45 || unCaracter == 46 || unCaracter == 95 ||
+			(unCaracter > 47 && unCaracter < 58) ||
+			(unCaracter > 96 && unCaracter < 123)) {
+			continue;
+			} else {
+			alert("Verifica el dominio de la dirección.");
+			return false;
+			}
+			}
+			return true;
+			}
+			alert("Comprueba la dirección de correo.");
+			return false;
+			}
+			
+
+
+// GUARDA LOS PARES NOMBRE VALOR EN LOCAL STORAGE PERO SOBREESCRIBE	
+//si se cambia el término de la clave, lo almacena e local storage como otro par clave valor más
+				
+				 function guardar(){ 
+				 
+				 var dni = document.getElementById("dni");
+		localStorage.setItem("dni", dni.value);  
+		var nombre = document.getElementById("nombre");// guardamos en la variable nombre el elemento con id nombre
+		localStorage.setItem("Nombre", nombre.value); // lo almacenamos en localStorage con la clave nombre y el valor que
+														//haya escrito el usuario
+		var apellidos = document.getElementById("apellidos");
+		localStorage.setItem("Apellidos", apellidos.value);  
+		var fecha = document.getElementById("fecha");
+		localStorage.setItem("Fecha Nacimiento", fecha.value); 
+		var calle = document.getElementById("calle");
+		localStorage.setItem("Domicilio", calle.value); 
+		var poblacion = document.getElementById("poblacion");
+		localStorage.setItem("Poblacion", poblacion.value);
+		var codigo = document.getElementById("codigo");
+		localStorage.setItem("C.P.", codigo.value);   
+		var pais = document.getElementById("pais");  
+		localStorage.setItem("País", pais.value);
+		var telefono = document.getElementById("telefono"); 
+		localStorage.setItem("Teléfono", telefono.value);
+		var mail = document.getElementById("mail"); 
+		localStorage.setItem("E-mail", mail.value); 
+		var usuario = document.getElementById("usuario");
+		localStorage.setItem("Nombre usuario", usuario.value); 
+			var contrasena = document.getElementById("contrasena");  
+		localStorage.setItem("Contraseña", contrasena.value);  
+		var repetir = document.getElementById("repetir");
+		localStorage.setItem("RE Contraseña", repetir.value);  
+		  }
+		  
+		  
+//función mayorEdad comprueba que el nuevo usurario tiene más de 18 años
+//Recuperamos la fecha de hoy mediante el constructor new Date()
+//y la comparamos con la fecha de nacimiento del usuario 
+//si es menor de edad saldrá una ventana alert y si es mayor de edad podrá continuar el formulario sin avisos.
+
+ function mayorEdad (fecha){  // en el campo del formulario indicamos el formato en el que se debe meter la fecha de nacimiento
+	var continuar= true; // variable para utilizarla en las condiciones como verdadero y que siga con el script
+	var vector= fecha.split("/"); //  split("")separa la fecha por los lugares donde se encuentra / 
+	diaNacimiento= vector[0]; 
+	mesNacimiento= vector[1];
+	anoNacimiento= vector[2];
+	//document.write(	diaNacimiento + " " +	mesNacimiento + " " + anoNacimiento);
+	var hoy = new Date(); // recuperamos la fecha de hoy
+	var dia = hoy.getDate(); //dia contiene el diad e hoy
+	var mes = hoy.getMonth() +1 ; //contiene el mes de hoy en un array con índices del 0 al 11, le sumamos 1
+	var anyo = hoy.getFullYear();
+	//document.write(dia+"/"+ mes +"/"+ anyo);
+
+	if (anoNacimiento > (anyo-18)){ // condiciones: que haya  nacido antes de el año en que nos encontramos -18
+		alert("Lo sentimos, tienes que ser mayor de edad");
+		}else if(anoNacimiento < (anyo-18)){
+		continuar= true;
+			} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento > mes)){ // y siestamos en el mismo año que el mes sea anterior al que nos encontramos
+			alert("Lo sentimos, tienes que ser mayor de edad");
+				}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento < mes)){
+				continuar= true;
+					} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento > dia)){
+					alert("Lo sentimos, tienes que ser mayor de edad");
+						}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento <= dia)){
+						continuar= true;
+							}
+	
+}
+
+// función que valida el password según requisitos de la práctica
+	function validarPassword (pass){
+// Expresión regular: de principio a fin que tenga al menos 8 caracteres, que al menos haya una letra mayúscula y al menos 1 dígito
+		if (!/(?=^.{8,}$)(?=.*[A-Z])(?=.*[0-9])/.test(pass)){ //método test que aplica la búsqueda de la expresión en el valor del formulario pasado a la función
+		contrasena = pass;
+			alert("Contraseña no válida: comprueba si tiene una letra mayúscula, un dígito y 8 caracteres mínimo");
+			}
+		}
+		
+/*	FUNCIÓN QUE COMPRUEBA QUE LAS 2 CONTRASEÑAS SON IGUALES
+	function comprobarPassword (repass){
+		if (repass != pass){
+			alert("Las contraseñas no coinciden, vuelve a escribirla");
+			}
+		
+		}*/
+		
+		
     </script>
 
 	<header>
@@ -25,19 +198,20 @@
 
 	<form action="" name="formulario" method="get">
 
-		<input type="text" id="nombre" name="nombre" placeholder="Nombre" required="required">
-		<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required="required">
-		<input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento" required="required">
-		<input type="text" id="calle" name="calle" placeholder="Calle" required="required">
-		<input type="text" id="poblacion" name="poblacion" placeholder="Población" required="required">
-		<input type="text" id="codigo" name="codigo" placeholder="C.P." required="required" onChange="valornumerico(this.value)";>
+		<input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+		<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+        <input type="text" id="dni" name="dni" placeholder="DNI-NIF"  onChange ="nif(this.value)" required>
+		<input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento (dd/mm/aaaa)" required onChange="mayorEdad(this.value)";>
+		<input type="text" id="calle" name="calle" placeholder="Calle" required>
+		<input type="text" id="poblacion" name="poblacion" placeholder="Población" required>
+		<input type="text" id="codigo" name="codigo" placeholder="C.P." required onChange="valornumerico(this.value)";>
 		<input type="text" id="pais" name="pais" placeholder="Pais">
-		<input type="text" id="telefono" name="telefono" placeholder="Teléfono" required="required">
-		<input type="mail" id="mail" name="mail" placeholder="E-mail" required="required">
-		<input type="text" id="usuario" name="usuario" placeholder="Usuario" required="required">
-		<input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required="required">
-		<input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required="required">
-		<input type="submit" value="Validar">
+		<input type="text" id="telefono" name="telefono" placeholder="Teléfono" size="9" required onChange="valornumerico(this.value)";>
+		<input type="mail" id="mail" name="mail" placeholder="E-mail" required onChange="esCorreoE(this)";>
+		<input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+		<input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required onChange="validarPassword(this.value)">
+		<input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required onChange="comprobarPassword(this.value)">
+		<input type="submit" value="Validar" onclick="guardar()">
 
 	</form>
 

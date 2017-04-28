@@ -85,7 +85,6 @@ footer{
 section#formulario{
 	margin-top:10px;
 	width:400px;
-	height:620px;
 	background-color:white;
 	color:red;
 	overflow:hidden;
@@ -107,7 +106,7 @@ input[type="text"],input[type="mail"],input[type="password"]{
 	border-radius:5px;
 	outline:none;
 	border:0px;
-	background-color:red;
+	background-color:#d6d6d6;
 }
 
 input[type="submit"]{
