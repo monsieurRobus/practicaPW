@@ -98,38 +98,39 @@
 			
 
 
-// GUARDA LOS PARES NOMBRE VALOR EN LOCAL STORAGE PERO SOBREESCRIBE	
-//si se cambia el término de la clave, lo almacena e local storage como otro par clave valor más
+//guardar el formulario en LocalStorage
+// GUARDA LOS PARES NOMBRE VALOR EN LOCAL STORAGE 
+//si es la misma clve se sobreescribe, por eso, cogemos el dni del usuario en una variable 
+//y lo añadimos a la clave al guardarlo con el método setItem
 				
-				 function guardar(){ 
+		function guardar(){ 
 				 
-				 var dni = document.getElementById("dni");
-		localStorage.setItem("dni", dni.value);  
-		var nombre = document.getElementById("nombre");// guardamos en la variable nombre el elemento con id nombre
-		localStorage.setItem("Nombre", nombre.value); // lo almacenamos en localStorage con la clave nombre y el valor que
-														//haya escrito el usuario
-		var apellidos = document.getElementById("apellidos");
-		localStorage.setItem("Apellidos", apellidos.value);  
-		var fecha = document.getElementById("fecha");
-		localStorage.setItem("Fecha Nacimiento", fecha.value); 
-		var calle = document.getElementById("calle");
-		localStorage.setItem("Domicilio", calle.value); 
-		var poblacion = document.getElementById("poblacion");
-		localStorage.setItem("Poblacion", poblacion.value);
-		var codigo = document.getElementById("codigo");
-		localStorage.setItem("C.P.", codigo.value);   
-		var pais = document.getElementById("pais");  
-		localStorage.setItem("País", pais.value);
-		var telefono = document.getElementById("telefono"); 
-		localStorage.setItem("Teléfono", telefono.value);
-		var mail = document.getElementById("mail"); 
-		localStorage.setItem("E-mail", mail.value); 
-		var usuario = document.getElementById("usuario");
-		localStorage.setItem("Nombre usuario", usuario.value); 
-			var contrasena = document.getElementById("contrasena");  
-		localStorage.setItem("Contraseña", contrasena.value);  
-		var repetir = document.getElementById("repetir");
-		localStorage.setItem("RE Contraseña", repetir.value);  
+		var dni = document.getElementById("dni");// variable donde se guarda el dni del usuario
+		localStorage.setItem(dni.value, dni.value);  // guardar en LocalStoprage el valor del dni como clave y su valor como valor
+		
+		localStorage.setItem(dni.value + "Nombre", nombre.value); 
+		
+		localStorage.setItem(dni.value + "Apellidos", apellidos.value);  
+		
+		localStorage.setItem(dni.value + "Fecha Nacimiento", fecha.value); 
+		
+		localStorage.setItem(dni.value + "Domicilio", calle.value); 
+		
+		localStorage.setItem(dni.value + "Poblacion", poblacion.value);
+		
+		localStorage.setItem(dni.value + "C.P.", codigo.value);   
+		 
+		localStorage.setItem(dni.value + "País", pais.value);
+		
+		localStorage.setItem(dni.value + "Teléfono", telefono.value);
+		
+		localStorage.setItem(dni.value + "E-mail", mail.value); 
+	
+		localStorage.setItem(dni.value + "Nombre usuario", usuario.value); 
+		
+		localStorage.setItem(dni.value + "Contraseña", contrasena.value);
+		  
+		localStorage.setItem(dni.value + "RE Contraseña", repetir.value);  
 		  }
 		  
 		  
@@ -138,34 +139,34 @@
 //y la comparamos con la fecha de nacimiento del usuario 
 //si es menor de edad saldrá una ventana alert y si es mayor de edad podrá continuar el formulario sin avisos.
 
- function mayorEdad (fecha){  // en el campo del formulario indicamos el formato en el que se debe meter la fecha de nacimiento
-	var continuar= true; // variable para utilizarla en las condiciones como verdadero y que siga con el script
-	var vector= fecha.split("/"); //  split("")separa la fecha por los lugares donde se encuentra / 
-	diaNacimiento= vector[0]; 
-	mesNacimiento= vector[1];
-	anoNacimiento= vector[2];
-	//document.write(	diaNacimiento + " " +	mesNacimiento + " " + anoNacimiento);
-	var hoy = new Date(); // recuperamos la fecha de hoy
-	var dia = hoy.getDate(); //dia contiene el diad e hoy
-	var mes = hoy.getMonth() +1 ; //contiene el mes de hoy en un array con índices del 0 al 11, le sumamos 1
-	var anyo = hoy.getFullYear();
-	//document.write(dia+"/"+ mes +"/"+ anyo);
-
-	if (anoNacimiento > (anyo-18)){ // condiciones: que haya  nacido antes de el año en que nos encontramos -18
-		alert("Lo sentimos, tienes que ser mayor de edad");
-		}else if(anoNacimiento < (anyo-18)){
-		continuar= true;
-			} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento > mes)){ // y siestamos en el mismo año que el mes sea anterior al que nos encontramos
-			alert("Lo sentimos, tienes que ser mayor de edad");
-				}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento < mes)){
-				continuar= true;
-					} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento > dia)){
-					alert("Lo sentimos, tienes que ser mayor de edad");
-						}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento <= dia)){
-						continuar= true;
-							}
+	 function mayorEdad (fecha){  // en el campo del formulario indicamos el formato en el que se debe meter la fecha de nacimiento
+		var continuar= true; // variable para utilizarla en las condiciones como verdadero y que siga con el script
+		var vector= fecha.split("/"); //  split("")separa la fecha por los lugares donde se encuentra / 
+		diaNacimiento= vector[0]; 
+		mesNacimiento= vector[1];
+		anoNacimiento= vector[2];
+		//document.write(	diaNacimiento + " " +	mesNacimiento + " " + anoNacimiento);
+		var hoy = new Date(); // recuperamos la fecha de hoy
+		var dia = hoy.getDate(); //dia contiene el diad e hoy
+		var mes = hoy.getMonth() +1 ; //contiene el mes de hoy en un array con índices del 0 al 11, le sumamos 1
+		var anyo = hoy.getFullYear();
+		//document.write(dia+"/"+ mes +"/"+ anyo);
 	
-}
+		if (anoNacimiento > (anyo-18)){ // condiciones: que haya  nacido antes de el año en que nos encontramos -18
+			alert("Lo sentimos, tienes que ser mayor de edad");
+			}else if(anoNacimiento < (anyo-18)){
+			continuar= true;
+				} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento > mes)){ // y siestamos en el mismo año que el mes sea anterior al que nos encontramos
+				alert("Lo sentimos, tienes que ser mayor de edad");
+					}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento < mes)){
+					continuar= true;
+						} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento > dia)){
+						alert("Lo sentimos, tienes que ser mayor de edad");
+							}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento <= dia)){
+							continuar= true;
+								}
+		
+	}
 
 // función que valida el password según requisitos de la práctica
 	function validarPassword (pass){
