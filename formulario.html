@@ -172,18 +172,23 @@
 	function validarPassword (pass){
 // Expresión regular: de principio a fin que tenga al menos 8 caracteres, que al menos haya una letra mayúscula y al menos 1 dígito
 		if (!/(?=^.{8,}$)(?=.*[A-Z])(?=.*[0-9])/.test(pass)){ //método test que aplica la búsqueda de la expresión en el valor del formulario pasado a la función
-		contrasena = pass;
+	
 			alert("Contraseña no válida: comprueba si tiene una letra mayúscula, un dígito y 8 caracteres mínimo");
 			}
 		}
 		
-/*	FUNCIÓN QUE COMPRUEBA QUE LAS 2 CONTRASEÑAS SON IGUALES
+//FUNCIÓN QUE COMPRUEBA QUE LAS 2 CONTRASEÑAS SON IGUALES
+//guardamos en la variable passuno el valor del campo con id contrasena
+//guardamos en la variable passdos el valor del campo con id repetir
+//y si no son iguale sale una ventana alert indicándolo
 	function comprobarPassword (repass){
-		if (repass != pass){
-			alert("Las contraseñas no coinciden, vuelve a escribirla");
+		passuno=document.formulario.contrasena.value; 
+		passdos=document.formulario.repetir.value;
+		if (passuno != passdos){
+			alert("Las contraseñas no son iguales");
 			}
 		
-		}*/
+		}
 		
 		
     </script>
@@ -212,7 +217,7 @@
 		<input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
 		<input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required onChange="validarPassword(this.value)">
 		<input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required onChange="comprobarPassword(this.value)">
-		<input type="submit" value="Validar" onclick="guardar()">
+		<input type="submit" value="Enviar" onclick="guardar()">
 
 	</form>
 
