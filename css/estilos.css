@@ -109,7 +109,7 @@ input[type="text"],input[type="mail"],input[type="password"]{
 	background-color:#d6d6d6;
 }
 
-button[type="submit"]{
+input[type="button"]{
 	margin:20px;
 	width:360px;
 	height:40px;
