@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+     <script>
+	 
+	
+		 
+		  function valida_envio() { 
+		 
+
+		 
+		 		// variable que tendrá valor verdadero cuando el campo esté ok, pero retornaremos false cuando no cumpla la validación 	
+				var continuar= true; 
+		  		var aviso = document.getElementById("aviso");// guardamos en la variable "aviso" el id que corresponde a un párrafo en HTML
+				aviso.innerHTML = "" //utilizamos innerHTML para escribir dentro del párrafo con id "aviso"
+		
+		
+
+
+// validar dni. Tiene que comprobar que la letra que equivale al resto de sumar los dígitos del DNI entre 23 en una tabla coincide con la letra del DNI 
+		 		var dni = document.formulario.dni.value;
+			  if(/^\d{8}[a-zA-Z]$/.test (dni) == true){//valida mediante expresión regular que el valor tenga 8 dígitos primero y un caracter minúscula o mayúscula y si es verdad
+				 numero = dni.substr(0,dni.length-1); // separa la variable con el número por un lado
+				 letra = dni.substr(dni.length-1,1); // variable con la letra
+				 numero = numero % 23;//se divide el número entre 23 porque así se valida el DNI
+				 tablaMinisterio='TRWAGMYFPDXBNJZSQVHLCKET';
+				 tablaMinisterio=tablaMinisterio.substring(numero,numero+1);// con el resto del móduklo buscamos el caracter en la tabla
+				if (tablaMinisterio!=letra.toUpperCase()) { // el caracter con la letra del DNI tienen que coincidir
+				   //alert('El DNI es incorrecto');
+				   var texto = "El DNI es incorrecto.<br/>"  
+           			 aviso.innerHTML += texto
+				 }else{
+				   continuar=false;
+				 }
+			  }else{
+				//alert('El DNI es incorrecto');// si el dni introducido no para la expresión regular establecida en la primera condición
+				 var texto = "El DNI es incorrecto.<br/>"  
+           		aviso.innerHTML += texto
+				continuar= false;
+			   }// cierre validación DNI
+		 
+//Valida fecha de nacimiento
+		var fecha= document.formulario.fecha.value; 
+		var vector= fecha.split("/"); //  split("")separa la fecha por los lugares donde se encuentra / 
+		diaNacimiento= vector[0]; 
+		mesNacimiento= vector[1];
+		anoNacimiento= vector[2];
+		//document.write(	diaNacimiento + " " +	mesNacimiento + " " + anoNacimiento);
+		var hoy = new Date(); // recuperamos la fecha de hoy
+		var dia = hoy.getDate(); //dia contiene el diad e hoy
+		var mes = hoy.getMonth() +1 ; //contiene el mes de hoy en un array con índices del 0 al 11, le sumamos 1
+		var anyo = hoy.getFullYear();
+		//document.write(dia+"/"+ mes +"/"+ anyo);
+	
+		if (anoNacimiento > (anyo-18)){ // condiciones: que haya  nacido antes de el año en que nos encontramos -18
+			//alert("Lo sentimos, tienes que ser mayor de edad");
+			 var texto = "Lo sentimos, tienes que ser mayor de edad.<br/>"  
+           			 aviso.innerHTML += texto
+			}else if(anoNacimiento < (anyo-18)){
+			continuar= true;
+				} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento > mes)){ // y siestamos en el mismo año que el mes sea anterior al que nos encontramos
+				//alert("Lo sentimos, tienes que ser mayor de edad");
+				 var texto = "Lo sentimos, tienes que ser mayor de edad.<br/>"  
+           			 aviso.innerHTML += texto
+					}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento < mes)){
+					continuar= true;
+						} else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento > dia)){
+						//alert("Lo sentimos, tienes que ser mayor de edad");
+						 var texto = "Lo sentimos, tienes que ser mayor de edad.<br/>"  
+           			 	aviso.innerHTML += texto
+							}else if ((anoNacimiento = (anyo-18)) && (mesNacimiento = mes) && (diaNacimiento <= dia)){
+							continuar= true;
+								}// cierre validar fecha nacimiento
+								
+								
+								
+
+//Validar C.P. función que mediante una expresión regular comprueba que el valor del campo es un número para el código postal
+				var codigopostal = document.formulario.codigo.value;
+        		if (!/^([0-9])*$/.test(codigopostal)){// dígitos entre 0 y 9 que pueden estar más de 1 vez
+         		//alert("El valor " + codigopostal + " no es un número");
+				 var texto = "El C.P. debe ser un número.<br/>"  
+           			 aviso.innerHTML += texto
+				continuar= false;
+    			  }// cierre condición validación campo numéricos con id "numero" que son el  CP y teléfono
+				
+				
+//Validar Tfono: función que mediante una expresión regular comprueba que el valor del campo es un número para teléfono
+				var telefono = document.formulario.telefono.value;
+        		if (!/^([0-9])*$/.test(telefono)){// dígitos entre 0 y 9 que pueden estar más de 1 vez
+         		//alert("El valor " + telefono + " no es un número");
+				 var texto = "El teléfono debe ser un número.<br/>"  
+           			 aviso.innerHTML += texto
+				continuar= false;
+    			  }//cierre condición teléfono numérico
+
+		 
+		 
+//validar correo electrónico con una expresión regular que verifique que el email está compuesto por: texto+@+texto+.+texto
+				var email = document.formulario.mail.value;
+        		if (!/[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]/.test(email)){// testea la variable email con la expresión regular
+         		//alert("El valor " + email + " no es válido");
+				 var texto = "Comprueba la dirección de correo electrónico.<br/>"  
+           			 aviso.innerHTML += texto
+				continuar= false;
+    			  }//cierre condición correo electrónico
+
+		 
+		 
+		 
+		  // función que valida el password según requisitos de la práctica
+				var pass= document.formulario.contrasena.value;
+			// Expresión regular: de principio a fin que tenga al menos 8 caracteres, que al menos haya una letra 			mayúscula y al menos 1 dígito
+				if (!/(?=^.{8,}$)(?=.*[A-Z])(?=.*[0-9])/.test(pass)){ //método test que aplica la búsqueda de la expresión en el valor del formulario pasado a la función
+	
+				//alert("Contraseña no válida: comprueba si tiene una letra mayúscula, un dígito y 8 caracteres mínimo");
+				var texto = "Contraseña no válida: comprueba si tiene una letra mayúscula, un dígito y 8 caracteres mínimo.<br/>"  
+           		 aviso.innerHTML += texto
+					 
+				continuar= false;
+				}//cierre de la condición para validar contraseña 
+		
+//FUNCIÓN QUE COMPRUEBA QUE LAS 2 CONTRASEÑAS SON IGUALES
+//guardamos en la variable passuno el valor del campo con id contrasena
+//guardamos en la variable passdos el valor del campo con id repetir
+//y si no son iguale sale una ventana alert indicándolo
+	
+		passuno=document.formulario.contrasena.value; 
+		passdos=document.formulario.repetir.value;
+		if (passuno != passdos){
+			//alert("Las contraseñas no son iguales");
+			
+			 var texto = "Las contraseñas no son iguales.<br/>"  
+           			 aviso.innerHTML += texto
+			continuar =false;
+			}// cierre comparación contraseñas				
+				
+			
+			guardar();
+		
+
+		  
+		  
+		  
+		  
+		  
+		  
+		  }// cierre de function valida envio
+			
+			
+			
+			
+		function guardar(){ 
+				 
+		var dni = document.getElementById("dni");// variable donde se guarda el dni del usuario
+		localStorage.setItem(dni.value, dni.value);  // guardar en LocalStoprage el valor del dni como clave y su valor como valor
+		
+		localStorage.setItem(dni.value + "Nombre", nombre.value); 
+		
+		localStorage.setItem(dni.value + "Apellidos", apellidos.value);  
+		
+		localStorage.setItem(dni.value + "Fecha Nacimiento", fecha.value); 
+		
+		localStorage.setItem(dni.value + "Domicilio", calle.value); 
+		
+		localStorage.setItem(dni.value + "Poblacion", poblacion.value);
+		
+		localStorage.setItem(dni.value + "C.P.", codigo.value);   
+		 
+		localStorage.setItem(dni.value + "País", pais.value);
+		
+		localStorage.setItem(dni.value + "Teléfono", telefono.value);
+		
+		localStorage.setItem(dni.value + "E-mail", mail.value); 
+	
+		localStorage.setItem(dni.value + "Nombre usuario", usuario.value); 
+		
+		localStorage.setItem(dni.value + "Contraseña", contrasena.value);
+		  
+		localStorage.setItem(dni.value + "RE Contraseña", repetir.value);  
+		  }
+		  
+		  	
+			
+			
+
+		
+    </script>
+
+	<header>
+		<a href="index.html" id="inmo">INMO GRU3P</a>
+		<p>La mejor oferta de vivienda en España</p>
+	</header>
+
+	<section id="formulario">
+
+	<p id="titulo">FORMULARIO DE REGISTRO</p>
+
+	<form action="" name="formulario" method="get" >
+
+		<input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+		<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+        <input type="text" id="dni" name="dni" placeholder="DNI-NIF"  onChange ="nif(this.value)" required>
+		<input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento (dd/mm/aaaa)" required onChange="mayorEdad(this.value)";>
+		<input type="text" id="calle" name="calle" placeholder="Calle" required>
+		<input type="text" id="poblacion" name="poblacion" placeholder="Población" required>
+		<input type="text" id="codigo" name="codigo" placeholder="C.P." required onChange="valornumerico(this.value)";>
+		<input type="text" id="pais" name="pais" placeholder="Pais">
+		<input type="text" id="telefono" name="telefono" placeholder="Teléfono" size="9" required onChange="valornumerico(this.value)";>
+		<input type="mail" id="mail" name="mail" placeholder="E-mail" required >
+		<input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+		<input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required >
+		<input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required onChange="comprobarPassword(this.value)">
+		<input type="button" value="Enviar" onclick="valida_envio()">
+
+	</form>
+
+	</section>
+<p id="aviso"></p>
+
+
+</body>
+</html>
