@@ -9,7 +9,8 @@
 
      <script>
 	 
-			
+//función que guarda el usuario registrado en localstorage. Guardará como clave el DNI + el nombre del campo escrito en literal y el valor será el valor del campo. El valor del campo lo conseguimos nombrando el name del campo del formulario seguido de .value		
+//El método setItem() de LocalStorage almacena el par clave -calor o actualiza el valor si la clave ya existe.	
 		function guardar(){ 
 				 
 		var dni = document.getElementById("dni");// variable donde se guarda el dni del usuario
@@ -39,8 +40,40 @@
 		  
 		localStorage.setItem(dni.value + "RE Contraseña", repetir.value);  
 		  }
-		  
-		 
+		
+		
+//La propiedad  LocalStorage permite acceder al objeto Storage donde comprobaremos uno por uno todos los valores almacenados para ver si coinciden con los del nuevo usuario. 	
+		
+
+		function comprobar_usuario (){
+					for (i=0; i< localStorage.length; i++){
+						if((document.formulario.nombre.value && document.formulario.apellidos.value)  == localStorage[localStorage.key(i)]){
+							document.getElementById("nombre").select();
+							document.getElementById("apellidos").select();
+							aviso.innerHTML = "Este usuario ya existe. Prueba con otro.<br/>"; 
+				
+							return false;	
+						}else if(document.formulario.dni.value == localStorage[localStorage.key(i)]){
+							document.getElementById("dni").select();
+							aviso.innerHTML = "Este DNI ya existe. Prueba con otro.<br/>"; 
+				
+							return false;	
+							} else if (document.formulario.mail.value == localStorage[localStorage.key(i)]){
+							document.getElementById("mail").select();
+							aviso.innerHTML = "Este correo electrónico ya existe. Prueba con otro.<br/>"; 
+				
+							return false;	
+						}
+					}
+				
+				
+				
+				
+				
+				}
+				  
+				 
+	
 		 
 		 
 		  function valida_envio() { 
@@ -199,8 +232,10 @@
 					return false;
 					}// cierre comparación contraseñas				
 						
-		
+		comprobar_usuario ();
 		guardar ();
+	
+		window.location="index.html";
 		
  }// cierre de function valida campos
 			
@@ -228,7 +263,7 @@
 
 		<input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
 		<input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
-        <input type="text" id="dni" name="dni" placeholder="DNI-NIF"  onChange ="nif(this.value)" required>
+        <input type="text" id="dni" name="dni" placeholder="DNI-NIF"   required>
 		<input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento (dd/mm/aaaa)" required >
 		<input type="text" id="calle" name="calle" placeholder="Calle" required>
 		<input type="text" id="poblacion" name="poblacion" placeholder="Población" required>
