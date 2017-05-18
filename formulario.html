@@ -16,29 +16,8 @@
 		var dni = document.getElementById("dni");// variable donde se guarda el dni del usuario
 		localStorage.setItem(dni.value, dni.value);  // guardar en LocalStoprage el valor del dni como clave y su valor como valor
 		
-		localStorage.setItem(dni.value + "Nombre", nombre.value); 
-		
-		localStorage.setItem(dni.value + "Apellidos", apellidos.value);  
-		
-		localStorage.setItem(dni.value + "Fecha Nacimiento", fecha.value); 
-		
-		localStorage.setItem(dni.value + "Domicilio", calle.value); 
-		
-		localStorage.setItem(dni.value + "Poblacion", poblacion.value);
-		
-		localStorage.setItem(dni.value + "C.P.", codigo.value);   
+		localStorage.setItem(dni.value, nombre.value+"#"+apellidos.value+"#"+fecha.value+"#"+calle.value+"#"+poblacion.value+"#"+pais.value+"#"+telefono.value+"#"+mail.value+"#"+usuario.value+"#"+contrasena.value+"#"+repetir.value); 
 		 
-		localStorage.setItem(dni.value + "País", pais.value);
-		
-		localStorage.setItem(dni.value + "Teléfono", telefono.value);
-		
-		localStorage.setItem(dni.value + "E-mail", mail.value); 
-	
-		localStorage.setItem(dni.value + "Nombre usuario", usuario.value); 
-		
-		localStorage.setItem(dni.value + "Contraseña", contrasena.value);
-		  
-		localStorage.setItem(dni.value + "RE Contraseña", repetir.value);  
 		  }
 		
 		
@@ -46,31 +25,8 @@
 		
 
 		function comprobar_usuario (){
-					for (i=0; i< localStorage.length; i++){
-						if((document.formulario.nombre.value && document.formulario.apellidos.value)  == localStorage[localStorage.key(i)]){
-							document.getElementById("nombre").select();
-							document.getElementById("apellidos").select();
-							aviso.innerHTML = "Este usuario ya existe. Prueba con otro.<br/>"; 
-				
-							return false;	
-						}else if(document.formulario.dni.value == localStorage[localStorage.key(i)]){
-							document.getElementById("dni").select();
-							aviso.innerHTML = "Este DNI ya existe. Prueba con otro.<br/>"; 
-				
-							return false;	
-							} else if (document.formulario.mail.value == localStorage[localStorage.key(i)]){
-							document.getElementById("mail").select();
-							aviso.innerHTML = "Este correo electrónico ya existe. Prueba con otro.<br/>"; 
-				
-							return false;	
-						}
-					}
-				
-				
-				
-				
-				
-				}
+					
+		}//cierre función comprobar usuario
 				  
 				 
 	
@@ -232,7 +188,40 @@
 					return false;
 					}// cierre comparación contraseñas				
 						
-		comprobar_usuario ();
+		
+		
+				for (i=0; i< localStorage.length; i++){
+						if(document.formulario.dni.value == localStorage.key(i)){
+							
+							aviso.innerHTML = "El usuario con este DNI ya existe. Prueba con otro<br/>"; 
+				
+							return false;	
+						}//cierre condición si el dni es == alguna clave en LocalStorage
+						separador="#"; //los valores de los campos se han separado con el símbolo de control #
+						//valorUsuario es el valor en LocalSorage de la clave (i) si es que no ha encontrado que el dni ya existe en el almacenamiento
+						valorUsuario= localStorage[localStorage.key(i)].split(separador);//valorUsuario riene un array con los valores de los campos. El método split es el que ha separado la cadena valor donde se encontraba el símbolo de control #
+							if ( document.formulario.nombre.value.toLowerCase() == valorUsuario[0].toLowerCase() &&  document.formulario.apellidos.value.toLowerCase() == valorUsuario[1].toLowerCase() ){
+								
+								aviso.innerHTML = "El usuario ya existe. Prueba con otro nombre <br/>"; 
+				
+							return false;	
+							}//cierre condición si nombre, apellidos  está en algún usuario de localstorage
+							
+							if( document.formulario.mail.value.toLowerCase() == valorUsuario[7].toLowerCase()){
+								aviso.innerHTML = "El usuario ya existe. Prueba con otro correo <br/>"; 
+				
+							return false;			
+							} // cierre condicion si el correo ya existe en algún usuario del LocalStorage
+					
+						
+						
+						
+				}//cierre bucle for
+
+		
+		
+		
+		
 		guardar ();
 	
 		window.location="index.html";
