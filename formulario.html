@@ -8,9 +8,9 @@
 <body>
 
      <script>
-	 
-//función que guarda el usuario registrado en localstorage. Guardará como clave el DNI + el nombre del campo escrito en literal y el valor será el valor del campo. El valor del campo lo conseguimos nombrando el name del campo del formulario seguido de .value		
 //El método setItem() de LocalStorage almacena el par clave -calor o actualiza el valor si la clave ya existe.	
+//Para guardar los usuarios vamos a usar su dni (dni.value) como clave y en el valor meteremos los valores de todos los campos del formulario  en un String. Separaremos el valor de los campos con #
+
 		function guardar(){ 
 				 
 		var dni = document.getElementById("dni");// variable donde se guarda el dni del usuario
@@ -24,11 +24,6 @@
 //La propiedad  LocalStorage permite acceder al objeto Storage donde comprobaremos uno por uno todos los valores almacenados para ver si coinciden con los del nuevo usuario. 	
 		
 
-		function comprobar_usuario (){
-					
-		}//cierre función comprobar usuario
-				  
-				 
 	
 		 
 		 
@@ -189,7 +184,7 @@
 					}// cierre comparación contraseñas				
 						
 		
-		
+//Para comprobar si el usuario existe en el localStorage, comprobamos que el valor metido en el campo dni no coincida con alguna clave del LocalStorage	
 				for (i=0; i< localStorage.length; i++){
 						if(document.formulario.dni.value == localStorage.key(i)){
 							
@@ -197,6 +192,9 @@
 				
 							return false;	
 						}//cierre condición si el dni es == alguna clave en LocalStorage
+						
+						//Para comprobar que el nombre y apellidos o correo electrónico no existen, miro la cadena almacenada en el valor del LocalStorgae, hago split mediante el separador # y consulto los índices 0, 1 y 7 del array generado por el método split. En esos índices se encuentran el nombre, apellidos y correo respectivamente.						
+						
 						separador="#"; //los valores de los campos se han separado con el símbolo de control #
 						//valorUsuario es el valor en LocalSorage de la clave (i) si es que no ha encontrado que el dni ya existe en el almacenamiento
 						valorUsuario= localStorage[localStorage.key(i)].split(separador);//valorUsuario riene un array con los valores de los campos. El método split es el que ha separado la cadena valor donde se encontraba el símbolo de control #
