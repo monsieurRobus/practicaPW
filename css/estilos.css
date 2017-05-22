@@ -12,6 +12,18 @@ html,body{
 	background-position: center 0;
 }
 
+p#iniciosesion{
+	position:absolute;
+	top:0px;
+	right:250px;
+	color:white;
+	background-color:red;
+	font-size:12px;
+	padding:7px;
+
+
+}
+
 header{
 	margin:auto;
 	background-color:white;
@@ -23,6 +35,7 @@ header{
 
 header #inmo{
 	font-size:3.5em
+
 }
 
 header #viviendas{
@@ -32,6 +45,31 @@ header #viviendas{
 	text-align:center;
 
 }
+
+header #webmapa{
+	background-color:yellow;
+}
+
+a#inmo{
+	text-decoration:none;
+}
+
+a#inmo:link{
+	color:red;
+}
+
+a#inmo:visited{
+	color:red;
+}
+
+a#inmo:hover{
+	color:red;
+}
+
+a#inmo:active{
+	color:red;
+}
+
 		
 p#descubre, p#acceso, p#mapa, p#provincia{
 	margin:auto;
