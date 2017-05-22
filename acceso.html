@@ -9,14 +9,16 @@
 
 	function acceder(){
 		
-
-		if (document.form.contrasena.value=='CONTRASEÑA' && document.form.usuario.value=='USUARIO'){ 
+        /*
+		if (document.form.contrasena.value=='contrasena' && document.form.usuario.value=='usuario'){ 
 			alert("Acceso Permitido");
         	window.location="mapa.html";
     	} 
     	else{ 
-         alert("Introduzca un usuario y su contraseña correctamente."); 
+         alert("Introduzca un usuario y su contraseña correctamente."+document.form.contrasena); 
     	} 
+        */
+        window.location="mapa.html";
 	
 	} 
 	</script>
@@ -34,9 +36,9 @@
 		
 		<form action="" name=form method="get">
 
-			<input type="text" id="usuario" name=usuario placeholder="Usuario">
-			<input type="password" id="contraseña" name=contrasena placeholder="Contraseña">
-			<input type="button" value="Aceptar" onclick= acceder()>
+			<input type="text" id="usuario" name="usuario" placeholder="Usuario">
+			<input type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+			<input type="button" value="Aceptar" onclick= "acceder()">
 
 		</form>
 
