@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,4 +62,51 @@
 	</section>
 	<p id="aviso"></p>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>acceso</title>
+	<link rel="stylesheet" href="css/estilos.css">
+
+	<script>
+
+	function acceder(){
+		
+
+		if (document.form.contrasena.value=='CONTRASEÑA' && document.form.usuario.value=='USUARIO'){ 
+			alert("Acceso Permitido");
+        	window.location="mapa.html";
+    	} 
+    	else{ 
+         alert("Introduzca un usuario y su contraseña correctamente."); 
+    	} 
+	
+	} 
+	</script>
+
+</head>
+<body>
+
+	<header>
+		<a href="index.html" id="inmo">INMO GRU3P</a>
+		<p>La mejor oferta de vivienda en España</p>
+	</header>
+
+	<section id="usuario">
+		<p id="acceso">INICIAR SESION</p>
+		
+		<form action="" name=form method="get">
+
+			<input type="text" id="usuario" name=usuario placeholder="Usuario">
+			<input type="password" id="contraseña" name=contrasena placeholder="Contraseña">
+			<input type="button" value="Aceptar" onclick= acceder()>
+
+		</form>
+
+	</section>
+	
+</body>
+>>>>>>> Juan
 </html>
