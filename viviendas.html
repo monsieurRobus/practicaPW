@@ -16,16 +16,30 @@
 	</header>
 
 	<section id="comunidad">
-		<p>COMUNIDAD</p>
+	    <h1>COMUNIDAD</h1>
+		<span id="ncomunidad">COMUNIDAD</span>
 
 	</section>
 
 	<section id="pisos">
-		<p>LISTADO DE VIVIENDAS</p>
-    
-    
-    
-
+		<h1>LISTADO DE VIVIENDAS</h1>
+        <div id="nombrepiso" class="piso">
+            <img src="imagenes/vivienda.jpg">
+            <div class="fila">
+                <span id="nanuncio" class="col1d4">Ejemplo</span>
+                <span class="precio col1d4">300</span>
+                <span class="ninteresados">0</span>                
+            </div>
+            <div class="fila">
+                <p class="descripcion col4d4">
+                    Lorem ipsun
+                </p>
+            </div>
+            <div class="detalles">
+                <span>Año construcción: </span><span class="anocons">6</span>
+            </div>            
+        </div>
+        
 		</section>
 	<script>
         var comunidad=sessionStorage.getItem('comunidad');
@@ -129,9 +143,10 @@
                 break;
                 }
         
-        seleccion=getPisos(comunidad);
+        contenido=getPisos(comunidad);
         
-        document.getElementById("comunidad").innerHTML=nComunidad;
+        document.getElementById("ncomunidad").innerHTML=nComunidad;
+        document.getElementById("pisos").innerHTML=contenido;
         
     
     </script>
