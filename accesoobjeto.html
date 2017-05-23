@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>acceso</title>
+	<link rel="stylesheet" href="css/estilos.css">
+
+	<script>
+
+	function acceder(){
+
+
+       	for (var total=0; total < localStorage.length; total++){
+
+       			var usuario1=localStorage.key(total); // valor de clave localStorage
+
+	   			var usuario2=localStorage[localStorage.key(total)]; // cadena de la clave localStorage
+
+	   			var usuario3=JSON.parse(usuario2); // convierte la cadena en un objeto de nuevo
+
+
+       			if (document.form.usuario.value==usuario3.usuario && document.form.contrasena.value==usuario3.contrasena){ 
+						alert("Acceso Permitido");
+        				location="mapa.html";
+    					};
+
+		}
+
+		document.form.usuario.value = "";
+        document.form.contrasena.value = "";
+        document.form.usuario.focus();
+        return; 
+
+     }	
+
+
+
+	/*var usuariocadena = localStorage.getItem("persona");
+
+	console.log(usuariocadena);
+	var usuario = JSON.parse(localStorage.getItem("dni"));
+
+	var totallocal = localStorage.length;
+
+	document.write(usuariocadena);
+	document.write(usuario);
+	document.write(totallocal);
+	document.write(usuario.dni.nombre+usuario.apellidos);
+    console.log("Recuperado de localStorage usuario: "+ usuario.nombre + ' ' + usuario.apellidos);
+
+	function acceder(){		
+
+		if (document.form.contrasena.value==usuario.contrasena && document.form.usuario.value==usuario.usuario){ 
+			alert("Acceso Permitido");
+        	location.href="mapa.html";
+    	} 
+    	else{ 
+         alert("Introduzca un usuario y su contraseña correctamente.");
+         document.form.usuario.value = "";
+         document.form.contrasena.value = "";
+         document.form.usuario.focus();
+         return; 
+    	} 
+	
+	} */
+	</script>
+
+</head>
+<body>
+
+	<header>
+		<a href="index.html" id="inmo">INMO GRU3P</a>
+		<p>La mejor oferta de vivienda en España</p>
+	</header>
+
+	<section id="usuario">
+		<p id="acceso">INICIAR SESION</p>
+		
+		<form action="" name=form method="get">
+
+			<input type="text" id="usuario" name=usuario placeholder="Usuario">
+			<input type="password" id="contrasena" name=contrasena placeholder="Contraseña">
+			<input type="button" value="Aceptar" onclick= acceder()>
+
+		</form>
+
+	</section>
+	
+</body>
+</html>
