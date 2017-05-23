@@ -7,62 +7,95 @@
 
 	<script>
 
-	function acceder(){
+var intentos=2;
+
+var ubloqueo=0;
 
 
-       	for (var total=0; total < localStorage.length; total++){
+function acceder(){
 
-       			var usuario1=localStorage.key(total); // valor de clave localStorage
+       		if (ubloqueo==0){
 
-	   			var usuario2=localStorage[localStorage.key(total)]; // cadena de la clave localStorage
+              if (document.form.usuario.value=="" || document.form.contrasena.value==""){
+            
+                  alert("Debes escribir un usuario y un password");
+                  document.form.usuario.focus(); 
+                  return ;
+              };
 
-	   			var usuario3=JSON.parse(usuario2); // convierte la cadena en un objeto de nuevo
+       			for (var total=0; total < localStorage.length; total++){
 
+       				var usuario1=localStorage.key(total); // valor de clave localStorage
 
-       			if (document.form.usuario.value==usuario3.usuario && document.form.contrasena.value==usuario3.contrasena){ 
-						alert("Acceso Permitido");
-        				location="mapa.html";
-    					};
+	   				var usuario2=localStorage[localStorage.key(total)]; // cadena de la clave localStorage
 
-		}
-
-		document.form.usuario.value = "";
-        document.form.contrasena.value = "";
-        document.form.usuario.focus();
-        return; 
-
-     }	
+	   				var usuario3=JSON.parse(usuario2); // convierte la cadena en un objeto de nuevo
 
 
+       					if (document.form.usuario.value==usuario3.usuario){ 
 
-	/*var usuariocadena = localStorage.getItem("persona");
+ //      						alert(total);
 
-	console.log(usuariocadena);
-	var usuario = JSON.parse(localStorage.getItem("dni"));
+ //      						alert("El usuario es correcto");
 
-	var totallocal = localStorage.length;
+       								if (document.form.contrasena.value==usuario3.contrasena){ 
 
-	document.write(usuariocadena);
-	document.write(usuario);
-	document.write(totallocal);
-	document.write(usuario.dni.nombre+usuario.apellidos);
-    console.log("Recuperado de localStorage usuario: "+ usuario.nombre + ' ' + usuario.apellidos);
+ //      									alert("El password es correcto");
 
-	function acceder(){		
+       									var variable=1;
 
-		if (document.form.contrasena.value==usuario.contrasena && document.form.usuario.value==usuario.usuario){ 
-			alert("Acceso Permitido");
-        	location.href="mapa.html";
-    	} 
-    	else{ 
-         alert("Introduzca un usuario y su contraseña correctamente.");
-         document.form.usuario.value = "";
-         document.form.contrasena.value = "";
-         document.form.usuario.focus();
-         return; 
-    	} 
-	
-	} */
+
+
+       								}else{
+       									var variable=2;     									
+       								};
+
+
+       						break;
+
+       					}else{
+       						var variable=0;
+       					};
+
+       			};
+
+       			if (variable==0){
+       				alert("El usuario no existe");
+       				document.form.usuario.value = "";
+         			document.form.contrasena.value = "";
+         			document.form.usuario.focus();
+
+       			};
+
+       			if (variable==1){
+       				alert("acceso permitido");
+       				location.href="mapa.html";
+       			}
+
+       			if (variable==2){
+       				if (intentos==0){
+       					alert("Lo sentimos. Cuenta Bloqueada. Pongase en contacto con el administrador");
+       					document.form.usuario.value = "";
+         				document.form.contrasena.value = "";
+         				ubloqueo=1;
+
+       				}else{
+       					alert("El password no es correcto. Le quedan "+intentos+" oportunidades");
+       					intentos--;
+         				document.form.contrasena.value = "";
+         				document.form.contrasena.focus(); 
+
+       				}
+       			}
+
+       	}else{
+       		   alert("Lo sentimos. Cuenta Bloqueada. Pongase en contacto con el administrador");
+       	}
+
+};
+
+
+
 	</script>
 
 </head>
