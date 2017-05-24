@@ -186,7 +186,13 @@ section#pisos{
 	border-radius:5px;
 }
 
-
+div#detalle-piso {
+    width:100%;
+    display: flex;
+    overflow: hidden;
+    background: #FFFFFF;
+    padding: 1em;
+}
 
 
 div span {
@@ -228,7 +234,14 @@ div .ninteresados {
 div .precio:after {
     content:"€";
 }
-
+div#lista-seleccion {
+    width:100%;
+    background: #FFFFFF;
+    overflow: hidden;
+    margin:1em 0;
+    padding:1em;
+    
+}
 .fila {    
     width:65%;
     display:flex;
