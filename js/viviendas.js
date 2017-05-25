@@ -1,14 +1,15 @@
 
 var seleccion = [];
+
 var viviendas = [
-    { interesados:0, idAnuncio:"0000" ,ciudad:"AAAAAA", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0, descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0001", ciudad:"AAAAAA", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0002", ciudad:"AAAAAA", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0003", ciudad:"AAAAAA", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0004", ciudad:"AAAAAA", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0, descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0005", ciudad:"AAAAAA", cp:0, comunidad:"cantabria", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0, descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0006", ciudad:"AAAAAA", cp:0, comunidad:"cantabria", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0, descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0007", ciudad:"AAAAAA", cp:0, comunidad:"madrid", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:0, descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0000" ,ciudad:"Albacete", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:800, descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0001", ciudad:"Toledo", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:600,descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0002", ciudad:"Ciudad Real", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:900,descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0003", ciudad:"Cuenca", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:350,descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0004", ciudad:"Guadalajara", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:450, descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0005", ciudad:"AAAAAA", cp:0, comunidad:"cantabria", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:550, descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0006", ciudad:"AAAAAA", cp:0, comunidad:"cantabria", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:320, descripcion:"Lorem ipsum dolor amet o algo así"},
+    { interesados:0, idAnuncio:"0007", ciudad:"AAAAAA", cp:0, comunidad:"madrid", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0, nhabitaciones: 0, precio:480, descripcion:"Lorem ipsum dolor amet o algo así"},
     { interesados:0, idAnuncio:"0008", ciudad:"AAAAAA", cp:0, comunidad:"madrid", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
     { interesados:0, idAnuncio:"0009", ciudad:"AAAAAA", cp:0, comunidad:"madrid", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
     { interesados:0, idAnuncio:"0010", ciudad:"AAAAAA", cp:0, comunidad:"cataluna", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
@@ -29,7 +30,7 @@ var viviendas = [
     { interesados:0, idAnuncio:"0025", ciudad:"AAAAAA", cp:0, comunidad:"icanarias", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
     { interesados:0, idAnuncio:"0026", ciudad:"AAAAAA", cp:0, comunidad:"extremadura", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
     { interesados:0, idAnuncio:"0027", ciudad:"AAAAAA", cp:0, comunidad:"extremadura", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0,descripcion:"Lorem ipsum dolor amet o algo así"},
-    { interesados:0, idAnuncio:"0028", ciudad:"AAAAAA", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:0, descripcion:"Lorem ipsum dolor amet o algo así"}];
+    { interesados:0, idAnuncio:"0028", ciudad:"Quintanar del Rey", cp:0, comunidad:"cmancha", calle: "AAAAAA", numero: 0, urlImg: 'vivienda.jpg', anocons:0,nhabitaciones: 0,precio:700, descripcion:"Lorem ipsum dolor amet o algo así"}];
 
 // Función que usaremos para seleccionar aquellos pisos que se correspondan con la comunidad autónoma
 function getPisos(comunidad)
@@ -55,8 +56,10 @@ function detalleVista(id){
             if(viviendas[i].idAnuncio == id)
                 {                    
                     viviendas[i].interesados+=1;    // Actualizamos el número de interesados
-                    sessionStorage.setItem('viviendaDetalle',indexVista);    
+                    sessionStorage.setItem('viviendaDetalle',i);    
+                    console.log(indexVista);
                 }
         }    
     
 }
+

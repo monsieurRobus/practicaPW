@@ -27,9 +27,10 @@ p#iniciosesion{
 header{
 	margin:auto;
 	background-color:white;
-	padding:20px;
+	padding:1em;
 	width:400px;
 	text-align:center;
+    overflow: hidden;
 
 }
 
@@ -50,20 +51,20 @@ header #webmapa{
 	background-color:yellow;
 }
 
-a#inmo{
+a{
 	text-decoration:none;
 }
 
-a#inmo:link{
+a:link{
 	color:red;
 }
 
-a#inmo:visited{
+a:visited{
 	color:red;
 }
 
-a#inmo:hover{
-	color:red;
+a:hover{
+	color:darkred;
 }
 
 a#inmo:active{
@@ -90,9 +91,8 @@ p#acceso{
 
 section{
 	margin:auto;
-	margin-top:20px;
-	padding:20px;
-	width:600px;
+	margin-top:20px;	
+	width:60%;
 	text-align:center;
 
 }
@@ -147,7 +147,7 @@ input[type="text"],input[type="mail"],input[type="password"]{
 	background-color:#d6d6d6;
 }
 
-input[type="button"]{
+input[type="button"],button#boton-interes{
 	margin:20px;
 	width:360px;
 	height:40px;
@@ -161,9 +161,11 @@ input[type="button"]{
 }
 
 
+
+
 section#comunidad{
 	margin:auto;
-	margin-top:10px;
+	margin-top:30px;
 	width:300px;
 	font-size:1.8em;
 	text-align:center;
@@ -188,9 +190,10 @@ section#pisos{
 
 div#detalle-piso {
     width:100%;
-    display: flex;
+    width:100%;
+    
     overflow: hidden;
-    background: #FFFFFF;
+    background: rgba(255,255,255,0.5);;
     padding: 1em;
 }
 
@@ -223,7 +226,17 @@ div .descripcion {
     font-style: italic;
 }
 
-div .anocons {
+.izq {
+    float:left;
+    padding:1em 0;
+}
+
+.ctr {
+    float:right;
+    padding:1em 0;
+}
+
+div .ano {    
     background: #d6d6d6;
 }
 
@@ -238,13 +251,61 @@ div#lista-seleccion {
     width:100%;
     background: #FFFFFF;
     overflow: hidden;
-    margin:1em 0;
+    margin:auto;
     padding:1em;
     
 }
+
+fieldset {
+    width:99%;
+    
+}
+
+.formulario-interes {
+    width:75%;
+    margin:2em -2em;
+    padding: 1em 2em;
+    height:8em;
+    font-size:1.1em;
+}
+
+
+div#interes {
+    width:100%;
+    margin:auto;
+    overflow: hidden;
+
+    
+}
+
+#interes h1,h2,h3 {
+    display: block;
+    width:100%;
+}
+
+.noFlex {
+    display:block;
+}
+
+.fotodetalle{
+    width:90%;
+}
+
 .fila {    
     width:65%;
     display:flex;
+}
+
+.caja {
+    background:#FFFFFF;
+    padding: 2em 0;
+}
+
+.thumb {
+    float:left;
+    width:16%;
+    margin:auto;
+    padding:0.05em;
 }
 
 .col1d4 {

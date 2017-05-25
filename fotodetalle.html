@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript" src="js/viviendas.js"></script>
+	<script>
+    
+        sessionStorage.setItem('viviendas',viviendas);
+    
+    </script>
+</head>
+<body>
+	<header>
+		<p id="inmo">INMO GRU3P</p>
+		<p>La mejor oferta de vivienda en España</p>
+		<span class="izq"><a href="mapa.html">&lt; Volver al mapa</a></span><span class="ctr"><a href="viviendas.html">Ir a la lista</a></span>
+	</header>
+
+	<section>
+        <h1 class="caja">Haga click en la foto para volver al piso</h1>
+        <div id="imagen-detalle" class="caja"></div>
+	</section>
+
+	<footer>
+
+		<p>Web creada por Carlos Díaz, Beatriz Estalayo y Juan Estévez (2017)</p>
+        
+	</footer>
+	<script>
+    
+            var imgDetalle = document.getElementById("imagen-detalle");
+            var detalle = sessionStorage.getItem("viviendaDetalle");            // Usamos el mismo id almacenado en el sessionStorage para localizar la imagen        
+            var piso = viviendas[detalle];
+            imgDetalle.innerHTML = '<a title="Volver a la vista del piso" href="vistadetalle.html"><img class="fotodetalle" src="imagenes/'+piso.urlImg+'"></a>';
+          
+        
+        
+    
+    </script>
+</body>
+</html>
