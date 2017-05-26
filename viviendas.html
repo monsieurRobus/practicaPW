@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Inmo Gru3p</title>
 	<link rel="stylesheet" href="css/estilos.css">
-    <script type="text/javascript" src="js/viviendas.js"></script>
+    <script type="text/javascript" src="js/func.js"></script>
     
     
 </head>
@@ -145,10 +145,20 @@
                 }
         
         contenido=getPisos(comunidad);        
+        
         document.getElementById("ncomunidad").innerHTML=nComunidad;
         document.getElementById("pisos").innerHTML=contenido;
         
-    
+        // Asociamos a los botones de ordenación sus funciones
+        document.getElementById("precioup").setAttribute("onclick","orden('precio',true)");
+        document.getElementById("precioup").setAttribute("onclick","orden('precio',false)");
+        document.getElementById("habitacionup").setAttribute("onclick","orden('habitacion',true)");
+        document.getElementById("habitaciondown").setAttribute("onclick","orden('habitacion',false)");
+        document.getElementById("anioup").setAttribute("onclick","orden('precio',true)");
+        document.getElementById("aniodown").setAttribute("onclick","orden('precio',false)");
+        document.getElementById("interesup").setAttribute("onclick","orden('habitacion',true)");
+        document.getElementById("interesdown").setAttribute("onclick","orden('habitacion',false)");
+        
     </script>
 </body>
 </html>

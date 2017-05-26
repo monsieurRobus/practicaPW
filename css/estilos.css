@@ -283,6 +283,22 @@ div#interes {
     width:100%;
 }
 
+.menulista {
+    font-size:0.8em;
+    margin:auto;
+    float:left;
+    padding: 1em 0;
+    width:25%;
+}
+
+.menulista input[type=button] {
+    
+    margin:0 1em 1em;
+    padding: 0 1em;    
+    width:4%;
+    
+}
+
 .noFlex {
     display:block;
 }

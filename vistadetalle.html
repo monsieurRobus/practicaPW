@@ -4,8 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Inmo Gru3p</title>
 	<link rel="stylesheet" href="css/estilos.css">
-	<script type="text/javascript" src="js/viviendas.js"></script>
-	
+	<script type="text/javascript" src="js/func.js"></script>	
 </head>
 <body>
 	<header>
@@ -63,22 +62,21 @@
 	</footer>
 	<script>
         
-        
         var divDetalle = document.getElementById('')
         var detalle = sessionStorage.getItem('viviendaDetalle');        
-        var pisoDetalle = viviendas[detalle];        
+        var pisoDetalle = stockViviendas[detalle];        
         var nombrePiso = document.getElementById("nanuncio");
         var comunidad = document.getElementById("comunidad");
         var precio = document.getElementById("precio");
         var fotoPiso = document.getElementById("foto");
-        var listaSeleccion = document.getElementById("lista-seleccion");
-        
+        var listaSeleccion = document.getElementById("lista-seleccion");        
         var ninteresados = document.getElementById("ninteresados")
         var desc = document.getElementById("desc");
         var anocons = document.getElementById("anocons");
         var nhabita = document.getElementById("nhabita");
         var calle = document.getElementById("calle");
         var imgDetalle = document.getElementById("")
+        
         // Escribimos cada campo en su lugar correspondiente        
         nombrePiso.innerHTML="Vivienda en "+pisoDetalle.ciudad;
         calle.innerHTML = pisoDetalle.calle;
@@ -191,33 +189,29 @@
             var contenidoLista='<h2>Otros pisos de la misma comunidad</h2>';    
         
         // Mostramos una lista de thumbnails con las fotos de los pisos.
-        for (var i=0;i<viviendas.length;i++ )
+        for (var index in stockViviendas)
         {            
             
-            if(pisoDetalle.comunidad === viviendas[i].comunidad)
+            if(pisoDetalle.comunidad === stockViviendas[index].comunidad)
                 {       
                     // En este bucle vamos almacenando uno a uno los thumbnails de cada una de las viviendas de la seleccion de la comunidad autonoma
-                    contenidoLista+='<a title="Vivienda en '+viviendas[i].ciudad+' | '+viviendas[i].precio+' €" href="vistadetalle.html" ><div  onclick="detalleVista('+viviendas[i].idAnuncio+');"><img class="thumb" src="imagenes/'+viviendas[i].urlImg+'"></div></a>';    
+                    
+                    if(pisoDetalle.idAnuncio === stockViviendas[index].idAnuncio)
+                        {   
+                            // El anuncio que estamos visionando en detalle es ignorado
+                            contenidoLista+='';
+                            
+                        }
+                    
+                    else {
+                        // EN caso contrario, se dibuja el elemento correspondiente de la lista
+                        contenidoLista+='<a title="Vivienda en '+stockViviendas[index].ciudad+' | '+stockViviendas[index].precio+' €" href="vistadetalle.html" ><div  onclick="detalleVista('+stockViviendas[index].idAnuncio+');"><img class="thumb" src="imagenes/'+stockViviendas[index].urlImg+'"></div></a>';   
+                    }
                     
                 }
         }    
             listaSeleccion.innerHTML=contenidoLista;
-        // Con esta funcion sustituimos el botón por un formulario para enviar el deseo de alquilar al propietario
-        function formularioInteres(){
-            
-            var divForm = document.getElementById("interes");
-            var contenido='<div id="tituloFormulario"></div><form id="form"><fieldset><label>Enviar comentario al dueño de la vivienda</label><textarea class="formulario-interes">Inserte el comentario que desea enviar</textarea><input type="button" value="Enviar" onclick="enviarComentario();"></fieldset></form>';
-            divForm.setAttribute("class","noFlex");
-            divForm.innerHTML = contenido;
-            
-        }
-        
-        function enviarComentario() {
-            var divForm = document.getElementById("form");
-            var contenido='<div class="caja"><h1>¡GRACIAS!</h1><h2>Hemos enviado el mensaje al dueño de la vivienda. En breves se pondrá en contacto con usted</h2></div>';
-            divForm.innerHTML = contenido;
-        }
-   
+    
     </script>
 </body>
 </html>

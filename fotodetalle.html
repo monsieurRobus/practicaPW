@@ -4,12 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Inmo Gru3p</title>
 	<link rel="stylesheet" href="css/estilos.css">
-	<script type="text/javascript" src="js/viviendas.js"></script>
-	<script>
-    
-        sessionStorage.setItem('viviendas',viviendas);
-    
-    </script>
+	<script type="text/javascript" src="js/func.js"></script>
 </head>
 <body>
 	<header>
@@ -32,7 +27,7 @@
     
             var imgDetalle = document.getElementById("imagen-detalle");
             var detalle = sessionStorage.getItem("viviendaDetalle");            // Usamos el mismo id almacenado en el sessionStorage para localizar la imagen        
-            var piso = viviendas[detalle];
+            var piso = stockViviendas[detalle];
             imgDetalle.innerHTML = '<a title="Volver a la vista del piso" href="vistadetalle.html"><img class="fotodetalle" src="imagenes/'+piso.urlImg+'"></a>';
           
         

@@ -4,8 +4,36 @@
 	<meta charset="UTF-8">
 	<title>Inmo Gru3p</title>
 	<link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript" src="js/viviendas.js"></script>
 </head>
 <body>
+<script>
+    
+    // Guardamos el stock de viviendas en localStorage. Para ello, en primer lugar se convierte el array de viviendas en una lista de objetos de la siguiente manera:
+        
+        stockViviendas={};
+        
+        for(var i=0;i<viviendas.length;i++)
+            {
+                stockViviendas[viviendas[i].idAnuncio]={
+                    idAnuncio:      viviendas[i].idAnuncio,
+                    interesados:    viviendas[i].interesados,
+                    ciudad:         viviendas[i].ciudad,
+                    cp:             viviendas[i].cp,
+                    comunidad:      viviendas[i].comunidad,
+                    calle:          viviendas[i].calle,
+                    numero:         viviendas[i].numero,
+                    urlImg:         viviendas[i].urlImg,
+                    anocons:        viviendas[i].anocons,
+                    nhabitaciones:  viviendas[i].nhabitaciones,
+                    precio:         viviendas[i].precio,
+                    descripcion:    viviendas[i].descripcion}
+                }
+        localStorage.setItem("viviendas",JSON.stringify(stockViviendas)); // Almacenamos la lista en el localstorage como string
+    
+    
+    </script>
+
 	<header>
 		<p id="inmo">INMO GRU3P</p>
 		<p>La mejor oferta de vivienda en España</p>
