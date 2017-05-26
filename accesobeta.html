@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>acceso</title>
+	<link rel="stylesheet" href="css/estilos.css">
+
+	<script>
+
+var intentos=2;
+
+usuariobloqueado={ "usuarios": "usuario"};
+
+localStorage.setItem("usuariobloqueado", JSON.stringify(usuariobloqueado));
+
+
+      function bloquear_cuenta(){ // esta funcion almacena en localStorage los usuarios que se van bloqueando 
+
+//            console.log(document.form.usuario.value);
+
+            Usuariobloq={ "usuarios": document.form.usuario.value}; //objeto Usuariobloq
+
+//           console.log(usuariobloq);
+
+            localStorage.setItem(document.form.usuario.value, JSON.stringify(Usuariobloq));
+
+            alert("Lo sentimos. Cuenta Bloqueada. Pongase en contacto con el administrador");
+            location.href="indexobjeto.html";
+
+      };
+
+      function acceder(){
+
+            if (document.form.usuario.value=="" || document.form.contrasena.value==""){
+            
+                  alert("Debes escribir un usuario y un password");
+                  document.form.usuario.focus(); 
+                  return;
+              };
+
+//Comprueba si el usuario con el que se intenta acceder no esta bloqueado
+
+            for (i=0; i< localStorage.length; i++){
+
+                console.log(JSON.parse(localStorage[localStorage.key(i)]).usuarios);
+
+                if(document.form.usuario.value==JSON.parse(localStorage[localStorage.key(i)]).usuarios){
+
+                  cuentabloqueada=true;
+                  break;
+
+                }else{
+                  cuentabloqueada=false;
+                };
+
+            };
+
+            if(cuentabloqueada==true){
+                  alert("Lo sentimos. Su cuenta esta bloqueada. Pongase en contacto con el administrador");
+                  location.href="indexobjeto.html";
+            }else{
+
+            for (var total=0; total < localStorage.length; total++){
+
+            var usuario1=localStorage.key(total); // valor de clave localStorage
+
+            var usuario2=localStorage[localStorage.key(total)]; // cadena de la clave localStorage
+
+            var usuario3=JSON.parse(usuario2); // convierte la cadena en un objeto de nuevo
+
+                if (document.form.usuario.value==usuario3.usuario){ //compara si es igual el valor del usuario con el usuario del objeto
+
+                      if (document.form.contrasena.value==usuario3.contrasena){ 
+
+                        var variable=1;
+
+                      }else{
+                        var variable=2;                       
+                      };
+
+                  break;
+
+                }else{
+                  var variable=0;
+                };
+
+            };
+
+            if (variable==0){
+              alert("El usuario no existe");
+              document.form.usuario.value = "";
+              document.form.contrasena.value = "";
+              document.form.usuario.focus(); //pone el cursor en el usuario para teclear de nuevo
+
+            };
+
+            if (variable==1){  
+
+                alert("acceso permitido");
+                location.href="mapa.html";
+
+            };
+
+            if (variable==2){
+              if (intentos==0){
+
+                bloquear_cuenta();
+
+              }else{
+                alert("El password no es correcto. Le quedan "+intentos+" intentos");
+                intentos--;
+                document.form.contrasena.value = "";
+                document.form.contrasena.focus();
+
+              }
+            };
+
+            }
+
+};
+
+	</script>
+
+</head>
+<body>
+
+	<header>
+		<a href="indexobjeto.html" id="inmo">INMO GRU3P</a>
+		<p>La mejor oferta de vivienda en España</p>
+	</header>
+
+	<section id="usuario">
+		<p id="acceso">INICIAR SESION</p>
+		
+		<form action="" name=form method="get">
+
+			<input type="text" id="usuario" name=usuario placeholder="Usuario">
+			<input type="password" id="contrasena" name=contrasena placeholder="Contraseña">
+			<input type="button" value="Aceptar" onclick= acceder()>
+
+		</form>
+
+	</section>
+	
+</body>
+</html>
