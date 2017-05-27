@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+    <script type="text/javascript" src="js/func.js"></script>
+    
+    
+</head>
+<body>
+	
+	<header>
+		<p id="inmo">INMO GRU3P</p>
+		<p>La mejor oferta de vivienda en España</p>
+		<div id="menu"><span class="izq"><a href="mapa.html">&lt; Volver al mapa</a></span></div>
+		<div id="logout"><span id="salir"><a href="index.html">Log out</a></span></div>
+	</header>
+
+	<section id="comunidad">
+	    <h1>COMUNIDAD</h1>
+		<span id="ncomunidad">COMUNIDAD</span>
+
+	</section>
+
+	<section id="pisos">
+		<h1>LISTADO DE VIVIENDAS</h1>
+        <div id="nombrepiso" class="piso">
+            <img src="imagenes/vivienda.jpg">
+            <div class="fila">
+                <span id="nanuncio" class="col1d4">Ejemplo</span>
+                <span class="precio col1d4">300</span>
+                <span class="ninteresados">0</span>                
+            </div>
+            <div class="fila">
+                <p class="descripcion col4d4">
+                    Lorem ipsun
+                </p>
+            </div>
+            <div class="detalles">
+                <span>Año construcción: </span><span class="anocons">6</span>
+            </div>            
+        </div>
+        
+		</section>
+	<script>
+        var comunidad=sessionStorage.getItem('comunidad');
+        var nComunidad="";
+        var seleccion=[];
+        
+        switch(comunidad)           
+                
+                // Una vez accedemos a la página, cargamos los pisos en función de la comunidad autonoma seleccionada mediante una llamada a la función getPisos de viviendas.
+                
+                {
+                case "galicia": 
+                    
+                    nComunidad="Galicia";
+                    
+                break;
+                case "asturias": 
+                    
+                    nComunidad="Asturias";
+                    
+                break;
+                case "cantabria": 
+                
+                    nComunidad="Cantabria";
+                    
+                break;
+                case "pvasco": 
+                
+                    nComunidad="País Vasco";
+                    
+                break;
+                case "navarra":
+                
+                    nComunidad="Comunidad Foral de Navarra";
+                
+                break;
+                case "aragon": 
+                
+                    nComunidad="Aragón";
+                
+                break;
+                case "cataluna": 
+                
+                    nComunidad="Cataluña";
+                
+                break;
+                case "rioja": 
+                    
+                    nComunidad="La Rioja";
+                
+                break;
+                case "cleon": 
+                
+                    nComunidad="Castilla y León";
+                
+                break;
+                case "madrid": 
+                
+                    nComunidad="Madrid";
+                
+                break;
+                case "cmancha": 
+                
+                    nComunidad="Castilla-La Mancha";
+                
+                break;
+                case "extremadura": 
+                
+                    nComunidad="Extremadura";
+                
+                break;
+                case "andalucia": 
+                
+                    nComunidad="Andalucía";
+                
+                break;
+                case "cvalenciana": 
+                
+                    nComunidad="Comunidad Valenciana";
+                
+                break;
+                case "murcia": 
+                
+                    nComunidad="Murcia";
+                
+                break;
+                case "ibaleares": 
+                
+                    nComunidad="Islas Baleares";
+                
+                break;
+                case "icanarias": 
+                
+                    nComunidad="Islas Canarias";
+                
+                break;
+                case "cym": 
+                
+                    nComunidad="Ceuta y Melilla";
+                
+                break;
+                }
+        
+        contenido=getPisos(comunidad); // Primero cogemos todos los pisos existentes y hacemos seleccion de los de la comunidad correspondiente       
+        
+        document.getElementById("ncomunidad").innerHTML=nComunidad;
+        document.getElementById("pisos").innerHTML=contenido;
+        
+        // Asociamos a los botones de ordenación sus funciones
+        document.getElementById("precioup").setAttribute("onclick","orden('precio',true)");
+        document.getElementById("preciodown").setAttribute("onclick","orden('precio',false)");
+        document.getElementById("habitacionup").setAttribute("onclick","orden('habitacion',true)");
+        document.getElementById("habitaciondown").setAttribute("onclick","orden('habitacion',false)");
+        document.getElementById("anioup").setAttribute("onclick","orden('anio',true)");
+        document.getElementById("aniodown").setAttribute("onclick","orden('anio',false)");
+        document.getElementById("interesup").setAttribute("onclick","orden('interesados',true)");
+        document.getElementById("interesdown").setAttribute("onclick","orden('interesados',false)");
+        
+    </script>
+</body>
+</html>
