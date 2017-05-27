@@ -13,7 +13,8 @@
 	<header>
 		<p id="inmo">INMO GRU3P</p>
 		<p>La mejor oferta de vivienda en España</p>
-		<span class="izq"><a href="mapa.html">&lt; Volver al mapa</a></span>
+		<div id="menu"><span class="izq"><a href="mapa.html">&lt; Volver al mapa</a></span></div>
+		<div id="logout"><span id="salir"><a href="index.html">Log out</a></span></div>
 	</header>
 
 	<section id="comunidad">
@@ -24,7 +25,28 @@
 
 	<section id="pisos">
 		<h1>LISTADO DE VIVIENDAS</h1>
-        <div id="nombrepiso" class="piso">
+       <div class="menulista">
+           <span>Precio</span>
+           <input id="precioup" type="button" value="&uarr;">
+           <input id="preciodown" type="button" value="&darr;">
+       </div>
+       <div class="menulista">
+           <span>N Hab.</span>
+           <input id="habitacionup" type="button" value="&uarr;">
+           <input id="habitaciondown" type="button" value="&darr;">
+       </div>
+       <div class="menulista">
+           <span>Año fab</span>
+           <input id="anioup" type="button" value="&uarr;">
+           <input id="aniodown" type="button" value="&darr;">
+       </div>
+       <div class="menulista">
+           <span>Interes</span>
+           <input id="interesup" type="button" value="&uarr;">
+           <input id="interesdown" type="button" value="&darr;">
+       </div>
+       <div id="listapisos">
+           <div id="nombrepiso" class="piso">
             <img src="imagenes/vivienda.jpg">
             <div class="fila">
                 <span id="nanuncio" class="col1d4">Ejemplo</span>
@@ -40,6 +62,8 @@
                 <span>Año construcción: </span><span class="anocons">6</span>
             </div>            
         </div>
+       </div>
+        
         
 		</section>
 	<script>
@@ -144,10 +168,10 @@
                 break;
                 }
         
-        contenido=getPisos(comunidad);        
+        contenido=getPisos(comunidad); // Primero cogemos todos los pisos existentes y hacemos seleccion de los de la comunidad correspondiente       
         
         document.getElementById("ncomunidad").innerHTML=nComunidad;
-        document.getElementById("pisos").innerHTML=contenido;
+        document.getElementById("listapisos").innerHTML=contenido;
         
         // Asociamos a los botones de ordenación sus funciones
         document.getElementById("precioup").setAttribute("onclick","orden('precio',true)");

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<<<<<<< Temporary merge branch 1
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,14 +74,16 @@
 
 	function acceder(){
 		
-
-		if (document.form.contrasena.value=='CONTRASEÑA' && document.form.usuario.value=='USUARIO'){ 
+        /*
+		if (document.form.contrasena.value=='contrasena' && document.form.usuario.value=='usuario'){ 
 			alert("Acceso Permitido");
         	window.location="mapa.html";
     	} 
     	else{ 
-         alert("Introduzca un usuario y su contraseña correctamente."); 
+         alert("Introduzca un usuario y su contraseña correctamente."+document.form.contrasena); 
     	} 
+        */
+        window.location="mapa.html";
 	
 	} 
 	</script>
@@ -99,14 +101,80 @@
 		
 		<form action="" name=form method="get">
 
-			<input type="text" id="usuario" name=usuario placeholder="Usuario">
-			<input type="password" id="contraseña" name=contrasena placeholder="Contraseña">
-			<input type="button" value="Aceptar" onclick= acceder()>
+			<input type="text" id="usuario" name="usuario" placeholder="Usuario">
+			<input type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+			<input type="button" value="Aceptar" onclick= "acceder()">
 
 		</form>
 
 	</section>
 	
 </body>
->>>>>>> Juan
+>>>>>>> Temporary merge branch 2
 </html>
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>acceso</title>
+	<link rel="stylesheet" href="css/estilos.css">
+    
+    <script>
+	
+		
+	function login_usuario(){
+		
+		
+		var aviso = document.getElementById("aviso");// guardamos en la variable "aviso" el id que corresponde a un párrafo en HTML
+				aviso.innerHTML = "" //utilizamos innerHTML para escribir dentro del párrafo con id "aviso"
+				
+		
+		for (i=0; i<localStorage.length; i++){
+			
+			separador="#";
+			//la variable valorUsuario almacenará el String de valores de los campos del formulario guardados en el valor de usuario(i) pero le aplico el método split y  guarda en un array subcadenas del String separado mediante el caracter de control 
+			valorUsuario = localStorage[localStorage.key(i)].split(separador);
+			
+				if (document.loginusuario.usuario.value == valorUsuario[8] && document.loginusuario.contraseña.value == valorUsuario[9]){
+						window.location="mapa.html";
+					
+					}// cierre condición si existe el usuario y coincide la contraseña ir al mapa con las comunidades autónomas
+						else if (document.loginusuario.usuario.value != valorUsuario[8]){
+							aviso.innerHTML="El usuario no existe";
+							}//cierre condición "si no existe el usuario en el localStorage" indicar que no exite.
+			
+			}//cierre bucle for
+		
+		
+		}//cierre función login
+	
+	
+	
+	</script>
+    
+    
+    
+</head>
+<body>
+	<header>
+		<a href="index.html" id="inmo">INMO GRU3P</a>
+		<p>La mejor oferta de vivienda en España</p>
+	</header>
+
+	<section id="usuario">
+		<p id="acceso">INICIAR SESION</p>
+		
+		<form action="" name="loginusuario" method="get">
+
+			<input type="text" id="usuario" name="usuario" placeholder="Usuario">
+			<input type="password" id="contraseña" name="contraseña" placeholder="Contraseña">
+			<input type="button" value="Aceptar" onclick="login_usuario()">
+
+		</form>
+
+	</section>
+	<p id="aviso"></p>
+</body>
+=======
+>>>>>>> Juan

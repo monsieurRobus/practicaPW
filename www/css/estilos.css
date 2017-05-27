@@ -227,12 +227,28 @@ div .descripcion {
     font-style: italic;
 }
 
+#menu,#logout {
+    display: block;
+    overflow: hidden;
+}
+
+
+#salir{
+    
+    float:right;
+    font-size: 0.8em;
+}
+
 div .detalles {
     display:flex;
     margin:auto -1em;
     padding: 1em 1em 1em 1em;
     background:#800000;
     color:#ff6666;
+}
+
+#foto {
+    width:35%;
 }
 
 .izq {
@@ -245,10 +261,15 @@ div .detalles {
     padding:1em 0;
 }
 
-
+div #volver {
+    padding:1em;
+    margin:auto;
+    width:80%;
+    background:#FFFFFF;
+}
 
 div .ninteresados {
-    margin:0 0 0 4em;  
+    margin:0 0 0 2em;  
 }
 
 div .precio:after {
@@ -319,7 +340,7 @@ div#interes {
 }
 
 .fila {    
-    width:65%;
+    width:55%;
     display:flex;
 }
 
@@ -345,4 +366,8 @@ div#interes {
 
 .col4d4 {
     width:100%;
+}
+
+.col1d10 {
+    width:10%;
 }

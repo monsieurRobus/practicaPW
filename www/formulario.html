@@ -8,7 +8,11 @@
   <body>
     <script type="text/javascript">
 
+      dni="dni";
 
+      usuariovirtual={ "nombre": "nombre", "apellidos": "apellidos", "dni" : "dni", "mail" : "mail"};
+
+      localStorage.setItem("dni", JSON.stringify(usuariovirtual));
 
       function guardarPersona() {
         var nombre = document.getElementById("nombre").value;
@@ -24,18 +28,81 @@
         var usuario = document.getElementById("usuario").value;
         var contrasena = document.getElementById("contrasena").value;
 
-
-        var Persona = { nombre: nombre, apellidos: apellidos, dni: dni, fecha: fecha, calle: calle, poblacion: poblacion, codigo: codigo, pais: pais,telefono: telefono, mail: mail, usuario: usuario, contrasena}; // objeto persona 
-
+        var Persona = { nombre: nombre, apellidos: apellidos, dni: dni, fecha: fecha, calle: calle, poblacion: poblacion, codigo: codigo, pais: pais,telefono: telefono, mail: mail, usuario: usuario, contrasena}; // almacena los valores del formulario en el objeto Persona 
 
 
-        localStorage.setItem(dni, JSON.stringify(Persona));
-        console.log("Guardado en localStorage usuario: "+ Persona.nombre + ' ' + Persona.apellidos);
+// comprobará si la nueva persona que el usuario esta registrando no está ya almacenada con un mismo nombre, dni o e-mail en localStorage
 
+        for (i=0; i< localStorage.length; i++){
+
+        if((Persona.nombre+Persona.apellidos)==(JSON.parse(localStorage[localStorage.key(i)]).nombre+JSON.parse(localStorage[localStorage.key(i)]).apellidos)){
+
+          alert("el nombre ya existe");
+          var nombreencontrado=true;
+
+          break;
+          }else{ var nombreencontrado=false};
+
+        };
+        for (i=0; i< localStorage.length; i++){
+
+            if(Persona.dni==JSON.parse(localStorage[localStorage.key(i)]).dni){
+                  alert("el dni ya existe");
+                  var dniencontrado=true;
+                  document.formulario.dni.value = "";
+                  document.formulario.dni.focus(); 
+                  break;
+        }else{ var dniencontrado=false};
+
+        };
+
+        for (i=0; i< localStorage.length; i++){
+
+            if(Persona.mail==JSON.parse(localStorage[localStorage.key(i)]).mail){
+                  alert("el mail ya existe");
+                  var mailencontrado=true;
+                  document.formulario.mail.value = "";
+                  document.formulario.mail.focus(); 
+                  break;
+        }else{ var mailencontrado=false};
+
+        };
+
+        if (nombreencontrado==true){
+
+                  document.formulario.nombre.value = "";
+                  document.formulario.apellidos.value = "";
+                  document.formulario.nombre.focus(); 
+
+        }       
+
+        if (dniencontrado==true){
+          
+                  document.formulario.dni.value = "";
+                  document.formulario.dni.focus(); 
+
+        }  
+
+        if (mailencontrado==true){
+          
+                  document.formulario.mail.value = "";
+                  document.formulario.mail.focus(); 
+
+        }          
+
+//si no encuentra ninguna persona igual guardará la nueva persona en el localStorage y mandará al usuario a la pagina principal para loggearse
+
+        if(nombreencontrado==false && dniencontrado==false && mailencontrado==false){
+        localStorage.setItem(dni, JSON.stringify(Persona)); // guarda en el localStorage el objeto Persona como cadena con la clave apellidos
+
+        var usuario = JSON.parse(localStorage.getItem(dni));
+        console.log("Recuperado de localStorage usuario: "+ usuario.nombre + ' ' + usuario.apellidos);
 
         alert("datos guardados");
-      }
+        location.href="index.html";
 
+        }
+      }
 
       function valida_envio() { 
      
@@ -44,21 +111,20 @@
           var aviso = document.getElementById("aviso");// guardamos en la variable "aviso" el id que corresponde a un párrafo en HTML
         //aviso.innerHTML = "" //utilizamos innerHTML para escribir dentro del párrafo con id "aviso"
     
-      
 // campo nombre obligatorio     
       if (document.formulario.nombre.value==""){
             
               alert("Debes escribir tu nombre");
               document.formulario.nombre.value = "";
-        document.formulario.nombre.focus(); 
-        return false;
+              document.formulario.nombre.focus(); 
+              return false;
       } 
 // campo apellido obligatorio     
       if (document.formulario.apellidos.value==""){
             
               alert("Debes escribir tus apellidos");
               document.formulario.apellidos.value = "";
-        document.formulario.apellidos.focus();  
+              document.formulario.apellidos.focus();  
         return false;
       }         
         
@@ -84,11 +150,7 @@
               document.formulario.dni.value = "";
         document.formulario.dni.focus();  
         return false;
-       }// cierre validación DNI
-     
-
-
-     
+       }// cierre validación DNI 
      
 //Valida fecha de nacimiento
         var fecha= document.formulario.fecha.value; 
@@ -230,24 +292,16 @@
           document.formulario.contrasena.value = "";
           document.formulario.contrasena.focus();
           return false;
-          }// cierre comparación contraseñas        
-            
+          }// cierre comparación contraseñas                   
 
     guardarPersona ();
   
-    location.href="indexobjeto.html";
-    
  }// cierre de function valida campos
      
-
-
-
-
-
     </script>
 
   <header>
-    <a href="indexobjeto.html" id="inmo">INMO GRU3P</a>
+    <a href="index.html" id="inmo">INMO GRU3P</a>
     <p>La mejor oferta de vivienda en España</p>
   </header>
 
@@ -255,24 +309,24 @@
 
   <p id="titulo">FORMULARIO DE REGISTRO</p>
 
-    <form class="" action="" name="formulario" method="post">
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="" required>
-      <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" value="" required>
-      <input type="text" id="dni" name="dni" placeholder="DNI-NIF"   required>
-      <input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento (dd/mm/aaaa)" required >
-      <input type="text" id="calle" name="calle" placeholder="Calle" required>
-      <input type="text" id="poblacion" name="poblacion" placeholder="Población" required>
-      <input type="text" id="codigo" name="codigo" placeholder="C.P." required >
-      <input type="text" id="pais" name="pais" placeholder="Pais">
-      <input type="text" id="telefono" name="telefono" placeholder="Teléfono" size="9" required >
-      <input type="mail" id="mail" name="mail" placeholder="E-mail" required >
-      <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
-      <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required >
-      <input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required >
-      <input type="button" value="Enviar" onclick="valida_envio()">
-        
+        <form class="" action="" name="formulario" method="post">
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="" required>
+          <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" value="" required>
+          <input type="text" id="dni" name="dni" placeholder="DNI-NIF"   required>
+          <input type="text" id="fecha" name="fecha" placeholder="Fecha de nacimiento (dd/mm/aaaa)" required >
+          <input type="text" id="calle" name="calle" placeholder="Calle" required>
+          <input type="text" id="poblacion" name="poblacion" placeholder="Población" required>
+          <input type="text" id="codigo" name="codigo" placeholder="C.P." required >
+          <input type="text" id="pais" name="pais" placeholder="Pais">
+          <input type="text" id="telefono" name="telefono" placeholder="Teléfono" size="9" required >
+          <input type="mail" id="mail" name="mail" placeholder="E-mail" required >
+          <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+          <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required >
+          <input type="password" id="repetir" name="repetir" placeholder="Repetir Contraseña" required >
+          <input type="button" value="Enviar" onclick="valida_envio()">
 
-    </form>
-    </section>
+
+        </form>
+      </section>
   </body>
 </html>
