@@ -223,7 +223,16 @@ div .descripcion {
     background:#FFFFFF;
     text-align: left;
     padding:1em;
+    margin:0 0 1em 0;
     font-style: italic;
+}
+
+div .detalles {
+    display:flex;
+    margin:auto -1em;
+    padding: 1em 1em 1em 1em;
+    background:#800000;
+    color:#ff6666;
 }
 
 .izq {
@@ -236,12 +245,10 @@ div .descripcion {
     padding:1em 0;
 }
 
-div .ano {    
-    background: #d6d6d6;
-}
+
 
 div .ninteresados {
-    text-align: right;    
+    margin:0 0 0 4em;  
 }
 
 div .precio:after {
@@ -305,6 +312,10 @@ div#interes {
 
 .fotodetalle{
     width:90%;
+}
+
+.calle {
+    padding:1em 0;
 }
 
 .fila {    

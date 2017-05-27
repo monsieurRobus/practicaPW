@@ -23,16 +23,15 @@
             <div id="nombrepiso" class="piso">
                <a href="fotodetalle.html"><img id="foto" src="imagenes/vivienda.jpg"></a>
             <div class="fila">
-                <span id="nanuncio" class="col2d4">Ejemplo</span>
-                <span id="comunidad" class="col1d4">Comunidad</span>
+                <span id="nanuncio" class="col1d4">Ejemplo</span>                
                 <span id="precio" class="precio col1d4">300</span>
                 <span id="ninteresados" class="ninteresados">0</span>                
             </div>  
             <div class="fila">
-                <span class="col2d4">Nº habitaciones: </span><span id="nhabita" class="col1d4"></span>
+                
             </div> 
             <div class="fila">
-                <span class="col1d4">Calle: </span><span id="calle" class="col1d4"></span><span class="col1d4" id="numero"></span>
+                <span class="calle col1d4">Calle: </span><span id="calle" class="calle col1d4"></span><span class="col1d4" id="numero"></span>
             </div>         
             <div class="fila">
                
@@ -41,8 +40,7 @@
                 </p>
             </div>
             <div class="detalles">
-                <div class="fila ano"><span class="col1d4">Año construcción: </span><span id="anocons" class="col1d4">6</span></div>
-                
+                <div class="fila ano"><span class="col1d4">Año construcción: </span><span id="anocons" class="col1d4">6</span><span class="col2d4">Nº habitaciones: </span><span id="nhabita" class="col1d4"></span></div>
                 
             </div>
                     
@@ -81,7 +79,7 @@
         nombrePiso.innerHTML="Vivienda en "+pisoDetalle.ciudad;
         calle.innerHTML = pisoDetalle.calle;
         precio.innerHTML=pisoDetalle.precio;
-        ninteresados.innerHTML = pisoDetalle.interesados;
+        ninteresados.innerHTML = 'Interesados: '+pisoDetalle.interesados;
         nhabita.innerHTML = pisoDetalle.nhabitaciones;
         anocons.innerHTML = pisoDetalle.anocons;
         desc.innerHTML = pisoDetalle.descripcion;

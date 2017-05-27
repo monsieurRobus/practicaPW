@@ -19,7 +19,7 @@ function getPisos(comunidad)
                 {                   
                     seleccion.push(stockViviendas[index]);   // Tras almacenarlo en el array SELECCION, procedemos a dibujarlo en la lista usando el mismo ciclo del bucle
                     
-                    contenido+='<a href="vistadetalle.html"><div id="'+stockViviendas[index].idAnuncio+'" class="piso" onclick="detalleVista('+stockViviendas[index].idAnuncio+');"><img src="imagenes/'+stockViviendas[index].urlImg+'"><div class="fila"><span id="'+stockViviendas[index].idAnuncio+'" class="col1d4">Vivienda en '+stockViviendas[index].ciudad+'</span><span class="precio col1d4">'+stockViviendas[index].precio+'</span><span class="ninteresados">'+stockViviendas[index].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+stockViviendas[index].descripcion+'</p></div><div class="detalles"><span>Año construcción:</span><span class="anocons">'+stockViviendas[index].anocons+'</span></div></div></a>';    
+                    contenido+='<a href="vistadetalle.html"><div id="'+stockViviendas[index].idAnuncio+'" class="piso" onclick="detalleVista('+stockViviendas[index].idAnuncio+');"><div><img src="imagenes/'+stockViviendas[index].urlImg+'"></div><div class="fila"><span id="'+stockViviendas[index].idAnuncio+'" class="col1d4">Vivienda en '+stockViviendas[index].ciudad+'</span><span class="precio col1d4">'+stockViviendas[index].precio+'</span><span class="col1d4">Calle '+stockViviendas[index].calle+' '+stockViviendas[index].numero+'</span><span class="ninteresados">Interesados: '+stockViviendas[index].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+stockViviendas[index].descripcion+'</p></div><div class="col4d4 detalles"><span>Año construcción:</span><span class="anocons "> '+stockViviendas[index].anocons+'</span><span class="col2d4">Número habitaciones: '+stockViviendas[index].nhabitaciones+'</span></div></div></a>';    
                 }
         }    
     
@@ -52,7 +52,7 @@ function formularioInteres(){
 function enviarComentario() {
     var detalle = sessionStorage.getItem("viviendaDetalle");
     pisoDetalle.interesados+=1;
-    ninteresados.innerHTML=pisoDetalle.interesados;
+    ninteresados.innerHTML='Interesados: '+pisoDetalle.interesados;
     stockViviendas[detalle].interesados=pisoDetalle.interesados;
     localStorage.setItem("viviendas",JSON.stringify(stockViviendas)); // Almacenamos la lista en el localstorage como string
     var divForm = document.getElementById("form");
@@ -63,46 +63,107 @@ function enviarComentario() {
 // Funcion para ordenar. Recibe la variable en función de la cual ordenaremos el array y si hacerlo en sentido ascendente o descendente
 function orden(variable,direccion){
     
-    var comparador='';
     
-    switch(variable)
-            {
-                case "precio":
-
-                    
-
-                break;
-
-                case "habitacion":
-
-
-
-                break;
-
-                case "anio":
-
-
-
-                break;
-
-                case "interesados":
-
-
-
-                break;
-
-            default:
-            break;
-    }
+    // Si el array es mayor de 2, realizamos la ordenación, si no, ignoramos la petición de ordenación
+    if(seleccion.length>=2)
+    {
     
-        if (direccion)
+        switch(variable)
                 {
                     
-                }
-            else
-                {
+                    case "precio":   
                     
+                    // Recorremos el array empezando desde el segundo elemento
+                    for (var i=1;i<seleccion.length;i++)
+                        {
+                            // Comprobamos si el elemento actual es mayor que el siguiente, intercambiamos los valores y reiniciamos el loop
+                            if(seleccion[i].precio < seleccion[i-1].precio)
+                                {
+                                    var aux = seleccion[i-1];
+                                    seleccion[i-1]=seleccion[i];
+                                    seleccion[i]=aux;
+                                    i=0;
+                                    console.log('swap!');
+                                }
+                        }
+                
+                    break;
+
+                    case "habitacion":
+                   
+                    // Recorremos el array empezando desde el segundo elemento
+                    for (var i=1;i<seleccion.length;i++)
+                        {
+                            // Comprobamos si el elemento actual es mayor que el siguiente, intercambiamos los valores y reiniciamos el loop
+                            if(seleccion[i].nhabitaciones < seleccion[i-1].nhabitaciones)
+                                {
+                                    var aux = seleccion[i-1];
+                                    seleccion[i-1]=seleccion[i];
+                                    seleccion[i]=aux;
+                                    i=0;
+                                    console.log('swap!');
+                                }
+                        }
+
+                    break;
+
+                    case "anio":
+                    
+                    // Recorremos el array empezando desde el segundo elemento
+                    for (var i=1;i<seleccion.length;i++)
+                        {
+                            // Comprobamos si el elemento actual es mayor que el siguiente, intercambiamos los valores y reiniciamos el loop
+                            if(seleccion[i].anocons < seleccion[i-1].anocons)
+                                {
+                                    var aux = seleccion[i-1];
+                                    seleccion[i-1]=seleccion[i];
+                                    seleccion[i]=aux;
+                                    i=0;
+                                    console.log('swap!');
+                                }
+                        }
+
+                    break;
+
+                    case "interesados":
+                
+                     // Recorremos el array empezando desde el segundo elemento
+                    for (var i=1;i<seleccion.length;i++)
+                        {
+                            // Comprobamos si el elemento actual es mayor que el siguiente, intercambiamos los valores y reiniciamos el loop
+                            if(seleccion[i].anocons < seleccion[i-1].anocons)
+                                {
+                                    var aux = seleccion[i-1];
+                                    seleccion[i-1]=seleccion[i];
+                                    seleccion[i]=aux;
+                                    i=0;
+                                    console.log('swap!');
+                                }
+                        }
+
+                    break;
+
+                    default:
+                    break;
                 }
-            
     
+            // Si es true, la dejamos como está, en caso contrario, invertimos su orden
+        if (!direccion)
+                {
+                    seleccion.reverse();
+                    console.log(seleccion);
+                }
+        
+            // Una vez ordenado el contenido, lo dibujamos en la web
+            contenido='';
+        
+            for (var i=0;i<seleccion.length;i++)
+                {                                        
+                    contenido+='<a href="vistadetalle.html"><div id="'+seleccion[i].idAnuncio+'" class="piso" onclick="detalleVista('+seleccion[i].idAnuncio+');"><img src="imagenes/'+seleccion[i].urlImg+'"><div class="fila"><span id="'+seleccion[i].idAnuncio+'" class="col1d4">Vivienda en '+seleccion[i].ciudad+'</span><span class="precio col1d4">'+seleccion[i].precio+'</span><span class="col1d4">Calle '+seleccion[i].calle+' '+seleccion[i].numero+'</span><span class="ninteresados">Interesados: '+seleccion[i].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+seleccion[i].descripcion+'</p></div><div class="col4d4 detalles"><span>Año construcción:</span><span class="anocons "> '+seleccion[i].anocons+'</span><span class="col2d4">Número habitaciones: '+seleccion[i].nhabitaciones+'</span></div></div></a>';   
+                }
+        
+            document.getElementById("listapisos").innerHTML=contenido;
+        }
+    
+          
 }
