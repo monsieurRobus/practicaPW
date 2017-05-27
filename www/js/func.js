@@ -7,33 +7,28 @@ stockViviendas = JSON.parse(localStorage.getItem("viviendas")); // Cogemos el st
 // Función que usaremos para seleccionar aquellos pisos que se correspondan con la comunidad autónoma
 function getPisos(comunidad)
 {
-    contenido='<h1>LISTADO DE VIVIENDAS</h1><div class="menulista"><span>Precio</span><input id="precioup" type="button" value="&uarr;"><input id="preciodown" type="button" value="&darr;"></div><div class="menulista"><span>N Hab.</span><input id="habitacionup" type="button" value="&uarr;"><input id="habitaciondown" type="button" value="&darr;"></div><div class="menulista"><span>Año fab</span><input id="anioup" type="button" value="&uarr;"><input id="aniodown" type="button" value="&darr;"></div><div class="menulista"><span>Interes</span><input id="interesup" type="button" value="&uarr;"><input id="interesdown" type="button" value="&darr;"></div>';          
-    
-    
-    contenido+="<div id='listapisos'>";
-    
+    var contenido='';
+
     // En esta cadena iremos añadiendo los elementos de la lista para luego pasarselo a la web
     for (var index in stockViviendas)
         {            
             if(comunidad === stockViviendas[index].comunidad)
                 {                   
                     seleccion.push(stockViviendas[index]);   // Tras almacenarlo en el array SELECCION, procedemos a dibujarlo en la lista usando el mismo ciclo del bucle
-                    
-                    
-                    contenido+='<a href="vistadetalle.html"><div id="'+stockViviendas[index].idAnuncio+'" class="piso" onclick="detalleVista('+stockViviendas[index].idAnuncio+');"><div><img src="imagenes/'+stockViviendas[index].urlImg+'"></div><div class="fila"><span id="'+stockViviendas[index].idAnuncio+'" class="col1d4">Vivienda en '+stockViviendas[index].ciudad+'</span><span class="precio col1d4">'+stockViviendas[index].precio+'</span><span class="col1d4">Calle '+stockViviendas[index].calle+' '+stockViviendas[index].numero+'</span><span class="ninteresados">Interesados: '+stockViviendas[index].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+stockViviendas[index].descripcion+'</p></div><div class="col4d4 detalles"><span>Año construcción:</span><span class="anocons "> '+stockViviendas[index].anocons+'</span><span class="col2d4">Número habitaciones: '+stockViviendas[index].nhabitaciones+'</span></div></div></a>';    
                 }
         } 
     
+        // Si no hay pisos, directamente dibuja un mensaje en el HTML, si nó, lanzará automaticamente la función de dibujar por orden de precio ascendente
         if (seleccion.length == 0)
             {
                 contenido+='<h2>Actualmente no tenemos pisos en esta comunidad :&lpar;</h2>';
             }
+        else {
+            contenido=orden("precio",true); // Dibuja stock en orden ascendente
+        }
        
-    
-    
-    
-    contenido+='<h3><a href="mapa.html">&lt; Volver al mapa</a></h3></div>';
-    return contenido;   // Devolvemos el contenido de la cadena que hemos construido en el array
+    contenido+='<h3><a href="mapa.html">&lt; Volver al mapa</a></h3>';
+    return contenido;   // Devolvemos el contenido de la cadena que hemos construido
 }
 
 // Función encargada de almacenar en el sessionstorage la vista detalle del piso que queremos ver en detalle. Al haber entrado en el mismo, sumaremos +1 al campo "interesados".
@@ -71,7 +66,6 @@ function enviarComentario() {
 
 // Funcion para ordenar. Recibe la variable en función de la cual ordenaremos el array y si hacerlo en sentido ascendente o descendente
 function orden(variable,direccion){
-    
     
     // Si el array es mayor de 2, realizamos la ordenación, si no, ignoramos la petición de ordenación
     if(seleccion.length>=2)
@@ -160,19 +154,10 @@ function orden(variable,direccion){
         
             // Una vez ordenado el contenido, lo dibujamos en la web
         
-            dibujaStock(seleccion);
-        
-//            contenido='';
-//        
-//            for (var i=0;i<seleccion.length;i++)
-//                {                                        
-//                    contenido+='<a href="vistadetalle.html"><div id="'+seleccion[i].idAnuncio+'" class="piso" onclick="detalleVista('+seleccion[i].idAnuncio+');"><img src="imagenes/'+seleccion[i].urlImg+'"><div class="fila"><span id="'+seleccion[i].idAnuncio+'" class="col1d4">Vivienda en '+seleccion[i].ciudad+'</span><span class="precio col1d4">'+seleccion[i].precio+'</span><span class="col1d4">Calle '+seleccion[i].calle+' '+seleccion[i].numero+'</span><span class="ninteresados">Interesados: '+seleccion[i].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+seleccion[i].descripcion+'</p></div><div class="col4d4 detalles"><span>Año construcción:</span><span class="anocons "> '+seleccion[i].anocons+'</span><span class="col2d4">Número habitaciones: '+seleccion[i].nhabitaciones+'</span></div></div></a>';   
-//                }
-//        
-//        contenido+='<h3><a href="mapa.html">&lt; Volver al mapa</a></h3></div>';        
-        
+           contenido = dibujaStock(seleccion);
             
         }
+    return contenido;
     
 }
 
@@ -185,9 +170,9 @@ function dibujaStock(selec)
                     contenido+='<a href="vistadetalle.html"><div id="'+selec[i].idAnuncio+'" class="piso" onclick="detalleVista('+selec[i].idAnuncio+');"><img src="imagenes/'+selec[i].urlImg+'"><div class="fila"><span id="'+selec[i].idAnuncio+'" class="col1d4">Vivienda en '+selec[i].ciudad+'</span><span class="precio col1d4">'+selec[i].precio+'</span><span class="col1d4">Calle '+selec[i].calle+' '+selec[i].numero+'</span><span class="ninteresados">Interesados: '+selec[i].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+selec[i].descripcion+'</p></div><div class="col4d4 detalles"><span>Año construcción:</span><span class="anocons "> '+selec[i].anocons+'</span><span class="col2d4">Número habitaciones: '+selec[i].nhabitaciones+'</span></div></div></a>';   
                 }
         
-        contenido+='<h3><a href="mapa.html">&lt; Volver al mapa</a></h3></div>';        
-        
             document.getElementById("listapisos").innerHTML=contenido;
+    
+    return contenido;
 }
 
 

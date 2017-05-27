@@ -247,6 +247,10 @@ div .detalles {
     color:#ff6666;
 }
 
+#foto {
+    width:35%;
+}
+
 .izq {
     float:left;
     padding:1em 0;
@@ -257,10 +261,15 @@ div .detalles {
     padding:1em 0;
 }
 
-
+div #volver {
+    padding:1em;
+    margin:auto;
+    width:80%;
+    background:#FFFFFF;
+}
 
 div .ninteresados {
-    margin:0 0 0 4em;  
+    margin:0 0 0 2em;  
 }
 
 div .precio:after {
@@ -331,7 +340,7 @@ div#interes {
 }
 
 .fila {    
-    width:65%;
+    width:55%;
     display:flex;
 }
 
@@ -357,4 +366,8 @@ div#interes {
 
 .col4d4 {
     width:100%;
+}
+
+.col1d10 {
+    width:10%;
 }
