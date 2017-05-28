@@ -221,7 +221,7 @@ div span {
 
 div .descripcion {
     background:#FFFFFF;
-    text-align: left;
+    text-align: justify;
     padding:1em;
     margin:0 0 1em 0;
     font-style: italic;

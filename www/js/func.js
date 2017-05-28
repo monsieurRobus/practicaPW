@@ -67,10 +67,7 @@ function enviarComentario() {
 // Funcion para ordenar. Recibe la variable en función de la cual ordenaremos el array y si hacerlo en sentido ascendente o descendente
 function orden(variable,direccion){
     
-    // Si el array es mayor de 2, realizamos la ordenación, si no, ignoramos la petición de ordenación
-    if(seleccion.length>=2)
-    {
-    
+        // Definimos el algoritmo de ordenación dentro de cada caso.
         switch(variable)
                 {
                     
@@ -156,7 +153,7 @@ function orden(variable,direccion){
         
            contenido = dibujaStock(seleccion);
             
-        }
+        
     return contenido;
     
 }
@@ -176,7 +173,7 @@ function dibujaStock(selec)
 }
 
 
-// Función que se encarga de almacenar en el localStorage 
+// Función que se encarga de preparar el objeto de stock para almacenar en el localStorage 
 function cargaStock(viviendas){
     
     var stockViviendas={};
