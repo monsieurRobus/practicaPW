@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript" src="js/func.js"></script>	
+</head>
+<body>
+	<header>
+		<p id="inmo">INMO GRU3P</p>
+		<p>La mejor oferta de vivienda en España</p>
+		<div id="menu"><span class="izq"><a href="mapa.html">&lt; Volver al mapa</a></span><span class="ctr"><a href="viviendas.html">Ir a la lista</a></span></div>
+		<div id="logout"><span id="salir"><a href="index.html">Log out</a></span></div>
+	</header>
+
+    <section id="comunidad">
+	    <h1>COMUNIDAD</h1>
+		<span id="ncomunidad">COMUNIDAD</span>
+	</section>
+	
+	<section id="vista-detalle">
+        <div id="detalle-piso">
+            <div id="nombrepiso" class="piso">
+               <a href="fotodetalle.html"><img id="foto" src="imagenes/vivienda.jpg"></a>
+            <div class="fila">
+                <span id="nanuncio" class="col1d4">Ejemplo</span>                
+                <span id="precio" class="precio col1d10">300</span>
+                <span id="ninteresados" class="ninteresados">0</span>                
+            </div>  
+            <div class="fila">
+                
+            </div> 
+            <div class="fila">
+                <span class="calle col1d4">Calle: </span><span id="calle" class="calle col1d4"></span><span class="col1d4" id="numero"></span>
+            </div>         
+            <div class="fila">
+               
+                <p id="desc" class="descripcion col4d4">
+                    Lorem ipsun
+                </p>
+            </div>
+            <div class="detalles">
+                <div class="fila ano"><span class="col1d4">Año construcción: </span><span id="anocons" class="col1d4">6</span><span class="col2d4">Nº habitaciones: </span><span id="nhabita" class="col1d4"></span></div>
+                
+            </div>
+                    
+              
+        </div>
+           <div id="volver">
+               <h3><a href="viviendas.html">&lt; Volver a la lista</a></h3>     
+           </div>
+            <div id="interes" class="botondetalle" ><button id="boton-interes" onclick="formularioInteres();">¿Estás interesado?</button></div>  
+         
+           <div id="lista-seleccion"></div>
+            
+        </div>
+	</section>
+
+	<footer>
+
+		<p>Web creada por Carlos Díaz, Beatriz Estalayo y Juan Estévez (2017)</p>
+
+	</footer>
+	<script>
+        
+        var divDetalle = document.getElementById('')
+        var detalle = sessionStorage.getItem('viviendaDetalle');        
+        var pisoDetalle = stockViviendas[detalle];        
+        var nombrePiso = document.getElementById("nanuncio");
+        var comunidad = document.getElementById("comunidad");
+        var precio = document.getElementById("precio");
+        var fotoPiso = document.getElementById("foto");
+        var listaSeleccion = document.getElementById("lista-seleccion");        
+        var ninteresados = document.getElementById("ninteresados")
+        var desc = document.getElementById("desc");
+        var anocons = document.getElementById("anocons");
+        var nhabita = document.getElementById("nhabita");
+        var calle = document.getElementById("calle");
+        var imgDetalle = document.getElementById("")
+        
+        // Escribimos cada campo en su lugar correspondiente        
+        nombrePiso.innerHTML="Vivienda en "+pisoDetalle.ciudad;
+        calle.innerHTML = pisoDetalle.calle;
+        precio.innerHTML=pisoDetalle.precio;
+        ninteresados.innerHTML = 'Interesados: '+pisoDetalle.interesados;
+        nhabita.innerHTML = pisoDetalle.nhabitaciones;
+        anocons.innerHTML = pisoDetalle.anocons;
+        desc.innerHTML = pisoDetalle.descripcion;
+        
+        // Seleccionamos los pisos que nos interesen de la lista principal para mostrar en la lista de thumbnails
+        seleccion = getPisos(comunidad);
+        var nComunidad ='';
+        switch(pisoDetalle.comunidad)           
+                
+                {
+                case "galicia": 
+                    
+                    nComunidad="Galicia";
+                    
+                break;
+                case "asturias": 
+                    
+                    nComunidad="Asturias";
+                    
+                break;
+                case "cantabria": 
+                
+                    nComunidad="Cantabria";
+                    
+                break;
+                case "pvasco": 
+                
+                    nComunidad="País Vasco";
+                    
+                break;
+                case "navarra":
+                
+                    nComunidad="Comunidad Foral de Navarra";
+                
+                break;
+                case "aragon": 
+                
+                    nComunidad="Aragón";
+                
+                break;
+                case "cataluna": 
+                
+                    nComunidad="Cataluña";
+                
+                break;
+                case "rioja": 
+                    
+                    nComunidad="La Rioja";
+                
+                break;
+                case "cleon": 
+                
+                    nComunidad="Castilla y León";
+                
+                break;
+                case "madrid": 
+                
+                    nComunidad="Madrid";
+                
+                break;
+                case "cmancha": 
+                
+                    nComunidad="Castilla-La Mancha";
+                
+                break;
+                case "extremadura": 
+                
+                    nComunidad="Extremadura";
+                
+                break;
+                case "andalucia": 
+                
+                    nComunidad="Andalucía";
+                
+                break;
+                case "cvalenciana": 
+                
+                    nComunidad="Comunidad Valenciana";
+                
+                break;
+                case "murcia": 
+                
+                    nComunidad="Murcia";
+                
+                break;
+                case "ibaleares": 
+                
+                    nComunidad="Islas Baleares";
+                
+                break;
+                case "icanarias": 
+                
+                    nComunidad="Islas Canarias";
+                
+                break;
+                case "cym": 
+                
+                    nComunidad="Ceuta y Melilla";
+                
+                break;
+                }
+        
+            comunidad.innerHTML= nComunidad;
+            fotoPiso.setAttribute("src","imagenes/"+pisoDetalle.urlImg);
+            var contenidoLista='<h2>Otros pisos de la misma comunidad</h2>';    
+        
+        // Mostramos una lista de thumbnails con las fotos de los pisos.
+        for (var index in stockViviendas)
+        {            
+            
+            if(pisoDetalle.comunidad === stockViviendas[index].comunidad)
+                {       
+                    // En este bucle vamos almacenando uno a uno los thumbnails de cada una de las viviendas de la seleccion de la comunidad autonoma
+                    
+                    if(pisoDetalle.idAnuncio === stockViviendas[index].idAnuncio)
+                        {   
+                            // El anuncio que estamos visionando en detalle es ignorado
+                            contenidoLista+='';
+                            
+                        }
+                    
+                    else {
+                        // EN caso contrario, se dibuja el elemento correspondiente de la lista
+                        contenidoLista+='<a title="Vivienda en '+stockViviendas[index].ciudad+' | '+stockViviendas[index].precio+' €" href="vistadetalle.html" ><div  onclick="detalleVista('+stockViviendas[index].idAnuncio+');"><img class="thumb" src="imagenes/'+stockViviendas[index].urlImg+'"></div></a>';   
+                    }
+                    
+                }
+        }    
+            listaSeleccion.innerHTML=contenidoLista;
+    
+    </script>
+</body>
+</html>

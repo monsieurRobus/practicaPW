@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inmo Gru3p</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript" src="js/viviendas.js"></script>
+	<script>
+        
+        function mapa(comunidad){
+            
+            sessionStorage.setItem('comunidad',comunidad);
+            
+        }
+    
+    </script>
+</head>
+<body>
+	<header id="webmapa">
+		<p id="inmo">INMO GRU3P</p>
+		<p>La mejor oferta de vivienda en España</p>
+		<span id="salir"><a href="index.html">Log out</a></span>		
+	</header>
+
+
+
+	<section>
+		
+	<p id="mapa">Elige comunidad autonoma:</p>
+
+		<img src="imagenes/mapanuevo.png" alt="mapa" usemap="#comunidades">
+		
+		<map name="comunidades">
+
+			<area title="Galicia" alt="Galicia" shape="rect" coords="60,40,120,120" onclick="mapa('galicia')" href="viviendas.html">
+			<area title="Asturias" alt="Asturias" shape="rect" coords="140,25,220,45" onclick="mapa('asturias')" href="viviendas.html">
+			<area title="Cantabria" alt="Cantabria" shape="rect" coords="235,35,280,50" onclick="mapa('cantabria')" href="viviendas.html">
+			<area title="Pais Vasco" alt="Pais Vasco" shape="rect" coords="295,40,325,85" onclick="mapa('pvasco')" href="viviendas.html">
+			<area title="Navarra" alt="Navarra" shape="rect" coords="340,60,365,110" onclick="mapa('navarra')" href="viviendas.html">
+			<area title="Aragón" alt="Aragón" shape="rect" coords="380,90,430,235" onclick="mapa('aragon')" href="viviendas.html">
+			<area title="Cataluña" alt="Cataluña" shape="rect" coords="465,90,555,210" onclick="mapa('cataluna')" href="viviendas.html">
+			<area title="La Rioja" alt="La Rioja" shape="rect" coords="295,95,350,120" onclick="mapa('rioja')" href="viviendas.html">
+			<area title="Castilla y León" alt="Castilla y León" shape="rect" coords="130,70,290,185" onclick="mapa('cleon')" href="viviendas.html">
+			<area title="Madrid" alt="Madrid" shape="rect" coords="240,190,290,255" onclick="mapa('madrid')" href="viviendas.html">
+			<area title="Castilla-La Mancha" alt="Castilla-La Mancha" shape="rect" onclick="mapa('cmancha')" coords="210,250,360,350" href="viviendas.html">
+			<area title="Extremadura" alt="Extremadura" shape="rect" coords="110,220,200,360" onclick="mapa('extremadura')" href="viviendas.html">
+			<area title="Andalucía" alt="Andalucía" shape="rect" coords="100,380,340,470" onclick="mapa('andalucia')" href="viviendas.html">
+			<area title="Comunidad Valenciana" alt="Comunidad Valencia" shape="rect" onclick="mapa('cvalenciana')" coords="380,240,440,390" href="viviendas.html">
+			<area title="Murcia" alt="Murcia" shape="rect" coords="335,370,400,415" onclick="mapa('murcia')" href="viviendas.html">
+			<area title="Islas Baleares" alt="Islas Baleares" shape="rect" coords="490,260,615,325" onclick="mapa('ibaleares')" href="viviendas.html">
+			<area title="Islas Canarias" alt="Islas Canarias" shape="rect" coords="375,450,640,580" onclick="mapa('icanarias')" href="viviendas.html">
+			<area title="Ceuta y Melilla" alt="Ceuta y Melilla" shape="rect" onclick="mapa('cym')" coords="170,520,290,570" href="viviendas.html">
+
+		</map>
+	</section>
+</body>
+</html>
