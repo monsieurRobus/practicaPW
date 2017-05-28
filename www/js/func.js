@@ -27,7 +27,7 @@ function getPisos(comunidad)
             contenido=orden("precio",true); // Dibuja stock en orden ascendente
         }
        
-    contenido+='<h3><a href="mapa.html">&lt; Volver al mapa</a></h3>';
+    
     return contenido;   // Devolvemos el contenido de la cadena que hemos construido
 }
 
@@ -166,7 +166,7 @@ function dibujaStock(selec)
                 {                                        
                     contenido+='<a href="vistadetalle.html"><div id="'+selec[i].idAnuncio+'" class="piso" onclick="detalleVista('+selec[i].idAnuncio+');"><img src="imagenes/'+selec[i].urlImg+'"><div class="fila"><span id="'+selec[i].idAnuncio+'" class="col1d4">Vivienda en '+selec[i].ciudad+'</span><span class="precio col1d4">'+selec[i].precio+'</span><span class="col1d4">Calle '+selec[i].calle+' '+selec[i].numero+'</span><span class="ninteresados">Interesados: '+selec[i].interesados+'</span></div><div class="fila"><p class="descripcion col4d4">'+selec[i].descripcion+'</p></div><div class="col4d4 detalles"><span>Año construcción:</span><span class="anocons "> '+selec[i].anocons+'</span><span class="col2d4">Número habitaciones: '+selec[i].nhabitaciones+'</span></div></div></a>';   
                 }
-        
+            contenido+='<h3><a href="mapa.html">&lt; Volver al mapa</a></h3>';
             document.getElementById("listapisos").innerHTML=contenido;
     
     return contenido;
